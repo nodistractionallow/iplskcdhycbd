@@ -1,0 +1,352 @@
+['Kieron Pollard', 'Hardik Pandya', 'Mayank Agarwal', 'Moeen Ali', 'Rahul Tewatia', 'Ambati Rayudu', 'Nitish Rana', 'Rishabh Pant', 'Faf du Plessis', 'Abdul Samad', 'Ravindra Jadeja']
+csk won the toss and chose to field
+0.1 Moeen Ali to Liam Livingstone 4 Score: 4/0
+0.2 Moeen Ali to Liam Livingstone 0 Score: 4/0
+0.3 Moeen Ali to Liam Livingstone 1 Score: 5/0
+0.4 Moeen Ali to David Warner 1 Score: 6/0
+0.5 Moeen Ali to Liam Livingstone 0 Score: 6/0
+0.6 Moeen Ali to Liam Livingstone 0 Score: 6/0
+1.1 Hardik Pandya to David Warner 0 Score: 6/0
+1.2 Hardik Pandya to David Warner 0 Score: 6/0
+1.3 Hardik Pandya to David Warner 0 Score: 6/0
+1.4 Hardik Pandya to David Warner 2 Score: 8/0
+1.5 Hardik Pandya to David Warner 0 Score: 8/0
+1.6 Hardik Pandya to David Warner 4 Score: 12/0
+2.1 Moeen Ali to Liam Livingstone 6 Score: 18/0
+2.2 Moeen Ali to Liam Livingstone W Score: 18/1 Bowled
+2.3 Moeen Ali to Shikhar Dhawan 0 Score: 18/1
+2.4 Moeen Ali to Shikhar Dhawan 6 Score: 24/1
+2.5 Moeen Ali to Shikhar Dhawan 0 Score: 24/1
+2.6 Moeen Ali to Shikhar Dhawan 0 Score: 24/1
+3.1 Hardik Pandya to David Warner 1 Score: 25/1
+3.2 Hardik Pandya to Shikhar Dhawan 4 Score: 29/1
+3.3 Hardik Pandya to Shikhar Dhawan 0 Score: 29/1
+3.4 Hardik Pandya to Shikhar Dhawan 1 Score: 30/1
+3.5 Hardik Pandya to David Warner 6 Score: 36/1
+3.6 Hardik Pandya to David Warner 0 Score: 36/1
+4.1 Ravindra Jadeja to Shikhar Dhawan 4 Score: 40/1
+4.2 Ravindra Jadeja to Shikhar Dhawan 1 Score: 41/1
+4.3 Ravindra Jadeja to David Warner 4 Score: 45/1
+4.4 Ravindra Jadeja to David Warner 1 Score: 46/1
+4.5 Ravindra Jadeja to Shikhar Dhawan 0 Score: 46/1
+4.6 Ravindra Jadeja to Shikhar Dhawan 1 Score: 47/1
+5.1 Abdul Samad to Shikhar Dhawan 0 Score: 47/1
+5.2 Abdul Samad to Shikhar Dhawan 4 Score: 51/1
+5.3 Abdul Samad to Shikhar Dhawan 1 Score: 52/1
+5.4 Abdul Samad to David Warner 1 Score: 53/1
+5.5 Abdul Samad to Shikhar Dhawan 6 Score: 59/1
+5.6 Abdul Samad to Shikhar Dhawan 1 Score: 60/1
+6.1 Ravindra Jadeja to Shikhar Dhawan W Score: 60/2 Caught by Ravindra Jadeja
+6.2 Ravindra Jadeja to Kane Williamson 0 Score: 60/2
+6.3 Ravindra Jadeja to Kane Williamson 1 Score: 61/2
+6.4 Ravindra Jadeja to David Warner 0 Score: 61/2
+6.5 Ravindra Jadeja to David Warner 0 Score: 61/2
+6.6 Ravindra Jadeja to David Warner 4 Score: 65/2
+7.1 Abdul Samad to Kane Williamson 1 Score: 66/2
+7.2 Abdul Samad to David Warner 6 Score: 72/2
+7.3 Abdul Samad to David Warner 1 Score: 73/2
+7.4 Abdul Samad to Kane Williamson 2 Score: 75/2
+7.5 Abdul Samad to Kane Williamson 1 Score: 76/2
+7.6 Abdul Samad to David Warner 0 Score: 76/2
+8.1 Ravindra Jadeja to Kane Williamson 0 Score: 76/2
+8.2 Ravindra Jadeja to Kane Williamson 1 Score: 77/2
+8.3 Ravindra Jadeja to David Warner 1 Score: 78/2
+8.4 Ravindra Jadeja to Kane Williamson 2 Score: 80/2
+8.5 Ravindra Jadeja to Kane Williamson 1 Score: 81/2
+8.6 Ravindra Jadeja to David Warner 0 Score: 81/2
+9.1 Abdul Samad to Kane Williamson 1 Score: 82/2
+9.2 Abdul Samad to David Warner Wide Score: 83/2
+9.3 Abdul Samad to David Warner 0 Score: 83/2
+9.4 Abdul Samad to David Warner 1 Score: 84/2
+9.5 Abdul Samad to Kane Williamson 1 Score: 85/2
+9.6 Abdul Samad to David Warner 1 Score: 86/2
+9.7 Abdul Samad to Kane Williamson 0 Score: 86/2
+10.1 Rahul Tewatia to David Warner 6 Score: 92/2
+10.2 Rahul Tewatia to David Warner 0 Score: 92/2
+10.3 Rahul Tewatia to David Warner 1 Score: 93/2
+10.4 Rahul Tewatia to Kane Williamson 1 Score: 94/2
+10.5 Rahul Tewatia to David Warner 1 Score: 95/2
+10.6 Rahul Tewatia to Kane Williamson 4 Score: 99/2
+11.1 Nitish Rana to David Warner Wide Score: 100/2
+11.2 Nitish Rana to David Warner 0 Score: 100/2
+11.3 Nitish Rana to David Warner 0 Score: 100/2
+11.4 Nitish Rana to David Warner 1 Score: 101/2
+11.5 Nitish Rana to Kane Williamson 1 Score: 102/2
+11.6 Nitish Rana to David Warner W Score: 102/3 Lbw
+11.7 Nitish Rana to Ishan Kishan 1 Score: 103/3
+12.1 Rahul Tewatia to Ishan Kishan 0 Score: 103/3
+12.2 Rahul Tewatia to Ishan Kishan 1 Score: 104/3
+12.3 Rahul Tewatia to Kane Williamson 0 Score: 104/3
+12.4 Rahul Tewatia to Kane Williamson 1 Score: 105/3
+12.5 Rahul Tewatia to Ishan Kishan 1 Score: 106/3
+12.6 Rahul Tewatia to Kane Williamson 1 Score: 107/3
+13.1 Nitish Rana to Kane Williamson 0 Score: 107/3
+13.2 Nitish Rana to Kane Williamson 0 Score: 107/3
+13.3 Nitish Rana to Kane Williamson 1 Score: 108/3
+13.4 Nitish Rana to Ishan Kishan 1 Score: 109/3
+13.5 Nitish Rana to Kane Williamson 4 Score: 113/3
+13.6 Nitish Rana to Kane Williamson 0 Score: 113/3
+14.1 Rahul Tewatia to Ishan Kishan 2 Score: 115/3
+14.2 Rahul Tewatia to Ishan Kishan 1 Score: 116/3
+14.3 Rahul Tewatia to Kane Williamson 1 Score: 117/3
+14.4 Rahul Tewatia to Ishan Kishan 1 Score: 118/3
+14.5 Rahul Tewatia to Kane Williamson 1 Score: 119/3
+14.6 Rahul Tewatia to Ishan Kishan 0 Score: 119/3
+15.1 Nitish Rana to Kane Williamson 4 Score: 123/3
+15.2 Nitish Rana to Kane Williamson 1 Score: 124/3
+15.3 Nitish Rana to Ishan Kishan 1 Score: 125/3
+15.4 Nitish Rana to Kane Williamson 4 Score: 129/3
+15.5 Nitish Rana to Kane Williamson 1 Score: 130/3
+15.6 Nitish Rana to Ishan Kishan 1 Score: 131/3
+16.1 Rahul Tewatia to Ishan Kishan 1 Score: 132/3
+16.2 Rahul Tewatia to Kane Williamson 4 Score: 136/3
+16.3 Rahul Tewatia to Kane Williamson 1 Score: 137/3
+16.4 Rahul Tewatia to Ishan Kishan 1 Score: 138/3
+16.5 Rahul Tewatia to Kane Williamson 1 Score: 139/3
+16.6 Rahul Tewatia to Ishan Kishan 6 Score: 145/3
+17.1 Hardik Pandya to Kane Williamson 4 Score: 149/3
+17.2 Hardik Pandya to Kane Williamson 4 Score: 153/3
+17.3 Hardik Pandya to Kane Williamson Wide Score: 154/3
+17.4 Hardik Pandya to Kane Williamson 6 Score: 160/3
+17.5 Hardik Pandya to Kane Williamson 4 Score: 164/3
+17.6 Hardik Pandya to Kane Williamson 0 Score: 164/3
+17.7 Hardik Pandya to Kane Williamson 4 Score: 168/3
+18.1 Ravindra Jadeja to Ishan Kishan 0 Score: 168/3
+18.2 Ravindra Jadeja to Ishan Kishan Wide Score: 169/3
+18.3 Ravindra Jadeja to Ishan Kishan 0 Score: 169/3
+18.4 Ravindra Jadeja to Ishan Kishan 0 Score: 169/3
+18.5 Ravindra Jadeja to Ishan Kishan 4 Score: 173/3
+18.6 Ravindra Jadeja to Ishan Kishan 0 Score: 173/3
+18.7 Ravindra Jadeja to Ishan Kishan 4 Score: 177/3
+19.1 Hardik Pandya to Kane Williamson 0 Score: 177/3
+19.2 Hardik Pandya to Kane Williamson 1 Score: 178/3
+19.3 Hardik Pandya to Ishan Kishan 6 Score: 184/3
+19.4 Hardik Pandya to Ishan Kishan 0 Score: 184/3
+19.5 Hardik Pandya to Ishan Kishan 1 Score: 185/3
+19.6 Hardik Pandya to Kane Williamson 1 Score: 186/3
++----------------+--------+---------+--------+-------------------------+
+| Player         |   Runs |   Balls | SR     | Out                     |
++================+========+=========+========+=========================+
+| GJ Maxwell     |      0 |       0 | DNB    |                         |
++----------------+--------+---------+--------+-------------------------+
+| R SINGH        |      0 |       0 | DNB    |                         |
++----------------+--------+---------+--------+-------------------------+
+| LS Livingstone |     11 |       7 | 157.14 | bowled b MM Ali         |
++----------------+--------+---------+--------+-------------------------+
+| DA Warner      |     43 |      32 | 134.38 | lbw b N Rana            |
++----------------+--------+---------+--------+-------------------------+
+| DL Chahar      |      0 |       0 | DNB    |                         |
++----------------+--------+---------+--------+-------------------------+
+| Mohammed Shami |      0 |       0 | DNB    |                         |
++----------------+--------+---------+--------+-------------------------+
+| A Nortje       |      0 |       0 | DNB    |                         |
++----------------+--------+---------+--------+-------------------------+
+| DA Miller      |      0 |       0 | DNB    |                         |
++----------------+--------+---------+--------+-------------------------+
+| S Dhawan       |     29 |      17 | 170.59 | c RA Jadeja b RA Jadeja |
++----------------+--------+---------+--------+-------------------------+
+| Ishan Kishan   |     33 |      23 | 143.48 | Not out                 |
++----------------+--------+---------+--------+-------------------------+
+| KS Williamson  |     66 |      41 | 160.98 | Not out                 |
++----------------+--------+---------+--------+-------------------------+
++--------------+--------+---------+-----------+-------+
+| Player       |   Runs |   Overs |   Wickets | Eco   |
++==============+========+=========+===========+=======+
+| KA Pollard   |      0 |       0 |         0 | NA    |
++--------------+--------+---------+-----------+-------+
+| HH Pandya    |     50 |       4 |         0 | 12.5  |
++--------------+--------+---------+-----------+-------+
+| MA Agarwal   |      0 |       0 |         0 | NA    |
++--------------+--------+---------+-----------+-------+
+| MM Ali       |     18 |       2 |         1 | 9.0   |
++--------------+--------+---------+-----------+-------+
+| R Tewatia    |     37 |       4 |         0 | 9.25  |
++--------------+--------+---------+-----------+-------+
+| AT Rayudu    |      0 |       0 |         0 | NA    |
++--------------+--------+---------+-----------+-------+
+| N Rana       |     22 |       3 |         1 | 7.33  |
++--------------+--------+---------+-----------+-------+
+| RR Pant      |      0 |       0 |         0 | NA    |
++--------------+--------+---------+-----------+-------+
+| F du Plessis |      0 |       0 |         0 | NA    |
++--------------+--------+---------+-----------+-------+
+| Abdul Samad  |     29 |       3 |         0 | 9.67  |
++--------------+--------+---------+-----------+-------+
+| RA Jadeja    |     30 |       4 |         1 | 7.5   |
++--------------+--------+---------+-----------+-------+
+0.1 Deepak Chahar to Faf du Plessis 1 Score: 1/0
+0.2 Deepak Chahar to Mayank Agarwal 1 Score: 2/0
+0.3 Deepak Chahar to Faf du Plessis 4 Score: 6/0
+0.4 Deepak Chahar to Faf du Plessis 1 Score: 7/0
+0.5 Deepak Chahar to Mayank Agarwal Wide Score: 8/0
+0.6 Deepak Chahar to Mayank Agarwal Wide Score: 9/0
+0.7 Deepak Chahar to Mayank Agarwal W Score: 9/1 Caught by Kane Williamson
+0.8 Deepak Chahar to Nitish Rana 4 Score: 13/1
+1.1 Mohammed Shami to Faf du Plessis 0 Score: 13/1
+1.2 Mohammed Shami to Faf du Plessis 4 Score: 17/1
+1.3 Mohammed Shami to Faf du Plessis 0 Score: 17/1
+1.4 Mohammed Shami to Faf du Plessis 4 Score: 21/1
+1.5 Mohammed Shami to Faf du Plessis 2 Score: 23/1
+1.6 Mohammed Shami to Faf du Plessis 1 Score: 24/1
+2.1 Deepak Chahar to Faf du Plessis 0 Score: 24/1
+2.2 Deepak Chahar to Faf du Plessis 1 Score: 25/1
+2.3 Deepak Chahar to Nitish Rana 0 Score: 25/1
+2.4 Deepak Chahar to Nitish Rana 0 Score: 25/1
+2.5 Deepak Chahar to Nitish Rana 0 Score: 25/1
+2.6 Deepak Chahar to Nitish Rana Wide Score: 26/1
+2.7 Deepak Chahar to Nitish Rana 1 Score: 27/1
+3.1 Glenn Maxwell to Nitish Rana 0 Score: 27/1
+3.2 Glenn Maxwell to Nitish Rana 0 Score: 27/1
+3.3 Glenn Maxwell to Nitish Rana 1 Score: 28/1
+3.4 Glenn Maxwell to Faf du Plessis 0 Score: 28/1
+3.5 Glenn Maxwell to Faf du Plessis 0 Score: 28/1
+3.6 Glenn Maxwell to Faf du Plessis 1 Score: 29/1
+4.1 Anrich Nortje to Faf du Plessis 0 Score: 29/1
+4.2 Anrich Nortje to Faf du Plessis 1 Score: 30/1
+4.3 Anrich Nortje to Nitish Rana 2 Score: 32/1
+4.4 Anrich Nortje to Nitish Rana 2 Score: 34/1
+4.5 Anrich Nortje to Nitish Rana 4 Score: 38/1
+4.6 Anrich Nortje to Nitish Rana Wide Score: 39/1
+4.7 Anrich Nortje to Nitish Rana Wide Score: 40/1
+4.8 Anrich Nortje to Nitish Rana 0 Score: 40/1
+5.1 Glenn Maxwell to Faf du Plessis 1 Score: 41/1
+5.2 Glenn Maxwell to Nitish Rana 1 Score: 42/1
+5.3 Glenn Maxwell to Faf du Plessis 0 Score: 42/1
+5.4 Glenn Maxwell to Faf du Plessis 0 Score: 42/1
+5.5 Glenn Maxwell to Faf du Plessis 1 Score: 43/1
+5.6 Glenn Maxwell to Nitish Rana 4 Score: 47/1
+6.1 Anrich Nortje to Faf du Plessis 0 Score: 47/1
+6.2 Anrich Nortje to Faf du Plessis 1 Score: 48/1
+6.3 Anrich Nortje to Nitish Rana 1 Score: 49/1
+6.4 Anrich Nortje to Faf du Plessis 6 Score: 55/1
+6.5 Anrich Nortje to Faf du Plessis 0 Score: 55/1
+6.6 Anrich Nortje to Faf du Plessis 0 Score: 55/1
+7.1 Glenn Maxwell to Nitish Rana 0 Score: 55/1
+7.2 Glenn Maxwell to Nitish Rana 6 Score: 61/1
+7.3 Glenn Maxwell to Nitish Rana 0 Score: 61/1
+7.4 Glenn Maxwell to Nitish Rana 1 Score: 62/1
+7.5 Glenn Maxwell to Faf du Plessis 1 Score: 63/1
+7.6 Glenn Maxwell to Nitish Rana 1 Score: 64/1
+8.1 Anrich Nortje to Nitish Rana 0 Score: 64/1
+8.2 Anrich Nortje to Nitish Rana 0 Score: 64/1
+8.3 Anrich Nortje to Nitish Rana 0 Score: 64/1
+8.4 Anrich Nortje to Nitish Rana 0 Score: 64/1
+8.5 Anrich Nortje to Nitish Rana 0 Score: 64/1
+8.6 Anrich Nortje to Nitish Rana W Score: 64/2 Caught by RINKU SINGH
+9.1 Glenn Maxwell to Faf du Plessis 0 Score: 64/2
+9.2 Glenn Maxwell to Faf du Plessis 1 Score: 65/2
+9.3 Glenn Maxwell to Ambati Rayudu 1 Score: 66/2
+9.4 Glenn Maxwell to Faf du Plessis 0 Score: 66/2
+9.5 Glenn Maxwell to Faf du Plessis 1 Score: 67/2
+9.6 Glenn Maxwell to Ambati Rayudu 1 Score: 68/2
+10.1 RINKU SINGH to Ambati Rayudu 0 Score: 68/2
+10.2 RINKU SINGH to Ambati Rayudu 1 Score: 69/2
+10.3 RINKU SINGH to Faf du Plessis 2 Score: 71/2
+10.4 RINKU SINGH to Faf du Plessis 6 Score: 77/2
+10.5 RINKU SINGH to Faf du Plessis 6 Score: 83/2
+10.6 RINKU SINGH to Faf du Plessis 6 Score: 89/2
+11.1 Mohammed Shami to Ambati Rayudu 1 Score: 90/2
+11.2 Mohammed Shami to Faf du Plessis 6 Score: 96/2
+11.3 Mohammed Shami to Faf du Plessis 4 Score: 100/2
+11.4 Mohammed Shami to Faf du Plessis 1 Score: 101/2
+11.5 Mohammed Shami to Ambati Rayudu 0 Score: 101/2
+11.6 Mohammed Shami to Ambati Rayudu 0 Score: 101/2
+12.1 RINKU SINGH to Faf du Plessis W Score: 101/3 Bowled
+12.2 RINKU SINGH to Moeen Ali 6 Score: 107/3
+12.3 RINKU SINGH to Moeen Ali 0 Score: 107/3
+12.4 RINKU SINGH to Moeen Ali 4 Score: 111/3
+12.5 RINKU SINGH to Moeen Ali 1 Score: 112/3
+12.6 RINKU SINGH to Ambati Rayudu 6 Score: 118/3
+13.1 Mohammed Shami to Moeen Ali 6 Score: 124/3
+13.2 Mohammed Shami to Moeen Ali 0 Score: 124/3
+13.3 Mohammed Shami to Moeen Ali 0 Score: 124/3
+13.4 Mohammed Shami to Moeen Ali 0 Score: 124/3
+13.5 Mohammed Shami to Moeen Ali 0 Score: 124/3
+13.6 Mohammed Shami to Moeen Ali 6 Score: 130/3
+14.1 RINKU SINGH to Ambati Rayudu 0 Score: 130/3
+14.2 RINKU SINGH to Ambati Rayudu 4 Score: 134/3
+14.3 RINKU SINGH to Ambati Rayudu 1 Score: 135/3
+14.4 RINKU SINGH to Moeen Ali W Score: 135/4 Caught by Deepak Chahar
+14.5 RINKU SINGH to Rishabh Pant W Score: 135/5 Caught by RINKU SINGH
+14.6 RINKU SINGH to Abdul Samad 0 Score: 135/5
+15.1 Kane Williamson to Ambati Rayudu 1 Score: 136/5
+15.2 Kane Williamson to Abdul Samad 0 Score: 136/5
+15.3 Kane Williamson to Abdul Samad 1 Score: 137/5
+15.4 Kane Williamson to Ambati Rayudu 6 Score: 143/5
+15.5 Kane Williamson to Ambati Rayudu 1 Score: 144/5
+15.6 Kane Williamson to Abdul Samad 1 Score: 145/5
+16.1 RINKU SINGH to Abdul Samad W Score: 145/6 Caught by Glenn Maxwell
+16.2 RINKU SINGH to Kieron Pollard 6 Score: 151/6
+16.3 RINKU SINGH to Kieron Pollard 4 Score: 155/6
+16.4 RINKU SINGH to Kieron Pollard 0 Score: 155/6
+16.5 RINKU SINGH to Kieron Pollard 1 Score: 156/6
+16.6 RINKU SINGH to Ambati Rayudu 1 Score: 157/6
+17.1 Anrich Nortje to Ambati Rayudu 2 Score: 159/6
+17.2 Anrich Nortje to Ambati Rayudu 0 Score: 159/6
+17.3 Anrich Nortje to Ambati Rayudu 2 Score: 161/6
+17.4 Anrich Nortje to Ambati Rayudu 2 Score: 163/6
+17.5 Anrich Nortje to Ambati Rayudu 1 Score: 164/6
+17.6 Anrich Nortje to Kieron Pollard 0 Score: 164/6
+18.1 Mohammed Shami to Ambati Rayudu 1 Score: 165/6
+18.2 Mohammed Shami to Kieron Pollard 6 Score: 171/6
+18.3 Mohammed Shami to Kieron Pollard 1 Score: 172/6
+18.4 Mohammed Shami to Ambati Rayudu 1 Score: 173/6
+18.5 Mohammed Shami to Kieron Pollard 1 Score: 174/6
+18.6 Mohammed Shami to Ambati Rayudu Wide Score: 175/6
+18.7 Mohammed Shami to Ambati Rayudu 1 Score: 176/6
+19.1 Deepak Chahar to Ambati Rayudu W Score: 176/7 Caught by Ishan Kishan
+19.2 Deepak Chahar to Hardik Pandya 4 Score: 180/7
+19.3 Deepak Chahar to Hardik Pandya 4 Score: 184/7
+19.4 Deepak Chahar to Hardik Pandya 2 Score: 186/7
+19.5 Deepak Chahar to Hardik Pandya 1 Score: 187/7
+csk won by 3 wickets
++--------------+--------+---------+--------+-----------------------------+
+| Player       |   Runs |   Balls | SR     | Out                         |
++==============+========+=========+========+=============================+
+| KA Pollard   |     19 |       8 | 237.5  | Not out                     |
++--------------+--------+---------+--------+-----------------------------+
+| HH Pandya    |     11 |       4 | 275.0  | Not out                     |
++--------------+--------+---------+--------+-----------------------------+
+| MA Agarwal   |      1 |       2 | 50.0   | c KS Williamson b DL Chahar |
++--------------+--------+---------+--------+-----------------------------+
+| MM Ali       |     23 |      11 | 209.09 | c DL Chahar b R SINGH       |
++--------------+--------+---------+--------+-----------------------------+
+| R Tewatia    |      0 |       0 | DNB    |                             |
++--------------+--------+---------+--------+-----------------------------+
+| AT Rayudu    |     34 |      24 | 141.67 | c Ishan Kishan b DL Chahar  |
++--------------+--------+---------+--------+-----------------------------+
+| N Rana       |     28 |      26 | 107.69 | c R SINGH b A Nortje        |
++--------------+--------+---------+--------+-----------------------------+
+| RR Pant      |      0 |       1 | 0.0    | c R SINGH b R SINGH         |
++--------------+--------+---------+--------+-----------------------------+
+| F du Plessis |     63 |      38 | 165.79 | bowled b R SINGH            |
++--------------+--------+---------+--------+-----------------------------+
+| Abdul Samad  |      2 |       5 | 40.0   | c GJ Maxwell b R SINGH      |
++--------------+--------+---------+--------+-----------------------------+
+| RA Jadeja    |      0 |       0 | DNB    |                             |
++--------------+--------+---------+--------+-----------------------------+
++----------------+--------+---------+-----------+-------+
+| Player         |   Runs |   Overs |   Wickets | Eco   |
++================+========+=========+===========+=======+
+| GJ Maxwell     |     22 |     4   |         0 | 5.5   |
++----------------+--------+---------+-----------+-------+
+| R SINGH        |     55 |     4   |         4 | 13.75 |
++----------------+--------+---------+-----------+-------+
+| LS Livingstone |      0 |     0   |         0 | NA    |
++----------------+--------+---------+-----------+-------+
+| DA Warner      |      0 |     0   |         0 | NA    |
++----------------+--------+---------+-----------+-------+
+| DL Chahar      |     27 |     2.5 |         2 | 9.53  |
++----------------+--------+---------+-----------+-------+
+| Mohammed Shami |     47 |     4   |         0 | 11.75 |
++----------------+--------+---------+-----------+-------+
+| A Nortje       |     26 |     4   |         1 | 6.5   |
++----------------+--------+---------+-----------+-------+
+| DA Miller      |      0 |     0   |         0 | NA    |
++----------------+--------+---------+-----------+-------+
+| S Dhawan       |      0 |     0   |         0 | NA    |
++----------------+--------+---------+-----------+-------+
+| Ishan Kishan   |      0 |     0   |         0 | NA    |
++----------------+--------+---------+-----------+-------+
+| KS Williamson  |     10 |     1   |         0 | 10.0  |
++----------------+--------+---------+-----------+-------+
