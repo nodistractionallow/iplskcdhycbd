@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Scorecard Generator</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .team-selection, .scorecard-section { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        h2 { text-align: center; }
+        label { margin-right: 10px; }
+        select, button { padding: 8px; margin-right: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .hidden { display: none; }
+        .match-summary { background-color: #e7f3fe; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cricket Scorecard Generator</h2>
+
+        <div class="team-selection">
+            <h3>Select Teams</h3>
+            <form action="/generate_scorecard" method="post">
+                <label for="team1">Team 1:</label>
+                <select name="team1" id="team1">
+                    {% for team_code, team_players in teams.items() %}
+                        <option value="{{ team_code }}">{{ team_code.upper() }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="team2">Team 2:</label>
+                <select name="team2" id="team2">
+                    {% for team_code, team_players in teams.items() %}
+                        <option value="{{ team_code }}">{{ team_code.upper() }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Generate Scorecard</button>
+            </form>
+        </div>
+
+        {% if scorecard_data %}
+        <div class="scorecard-section">
+            <h3>Match Results</h3>
+
+            {% if scorecard_data.tossMsg %}
+            <div class="match-summary">
+                <h4>Toss</h4>
+                <p>{{ scorecard_data.tossMsg }}</p>
+            </div>
+            {% endif %}
+
+            {% if scorecard_data.innings1BatTeam %}
+            <h4>Innings 1: {{ scorecard_data.innings1BatTeam.upper() }}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Runs</th>
+                        <th>Balls</th>
+                        <th>SR</th>
+                        <th>How Out</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player, stats in scorecard_data.innings1Battracker.items() %}
+                    <tr>
+                        <td>{{ player }}</td>
+                        <td>{{ stats.runs }}</td>
+                        <td>{{ stats.balls }}</td>
+                        <td>{{ '%.2f'|format((stats.runs / stats.balls * 100) if stats.balls > 0 else 0) }}</td>
+                        <td>{{ stats.how_out }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p><strong>Total: {{ scorecard_data.innings1Runs }}/{{ scorecard_data.innings1Wickets }} ({{ scorecard_data.innings1Balls // 6 }}.{{ scorecard_data.innings1Balls % 6 }} Overs)</strong></p>
+
+            <h5>Bowling: {{ scorecard_data.innings2BatTeam.upper() }}</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Overs</th>
+                        <th>Runs</th>
+                        <th>Wickets</th>
+                        <th>Economy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player, stats in scorecard_data.innings1Bowltracker.items() %}
+                    <tr>
+                        <td>{{ player }}</td>
+                        <td>{{ stats.balls // 6 }}.{{ stats.balls % 6 }}</td>
+                        <td>{{ stats.runs }}</td>
+                        <td>{{ stats.wickets }}</td>
+                        <td>{{ '%.2f'|format((stats.runs / (stats.balls / 6)) if stats.balls > 0 else 0) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            <hr>
+
+            {% if scorecard_data.innings2BatTeam %}
+            <h4>Innings 2: {{ scorecard_data.innings2BatTeam.upper() }}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Runs</th>
+                        <th>Balls</th>
+                        <th>SR</th>
+                        <th>How Out</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player, stats in scorecard_data.innings2Battracker.items() %}
+                    <tr>
+                        <td>{{ player }}</td>
+                        <td>{{ stats.runs }}</td>
+                        <td>{{ stats.balls }}</td>
+                        <td>{{ '%.2f'|format((stats.runs / stats.balls * 100) if stats.balls > 0 else 0) }}</td>
+                        <td>{{ stats.how_out }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p><strong>Total: {{ scorecard_data.innings2Runs }}/{{ scorecard_data.innings2Wickets }} ({{ scorecard_data.innings2Balls // 6 }}.{{ scorecard_data.innings2Balls % 6 }} Overs)</strong></p>
+
+            <h5>Bowling: {{ scorecard_data.innings1BatTeam.upper() }}</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Overs</th>
+                        <th>Runs</th>
+                        <th>Wickets</th>
+                        <th>Economy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player, stats in scorecard_data.innings2Bowltracker.items() %}
+                    <tr>
+                        <td>{{ player }}</td>
+                        <td>{{ stats.balls // 6 }}.{{ stats.balls % 6 }}</td>
+                        <td>{{ stats.runs }}</td>
+                        <td>{{ stats.wickets }}</td>
+                        <td>{{ '%.2f'|format((stats.runs / (stats.balls / 6)) if stats.balls > 0 else 0) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% if scorecard_data.winMsg %}
+            <div class="match-summary" style="margin-top: 20px; background-color: #d4edda; color: #155724;">
+                <h4>Result</h4>
+                <p><strong>{{ scorecard_data.winMsg }}</strong></p>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
