@@ -2283,11 +2283,11 @@ def game(manual=True, sentTeamOne=None, sentTeamTwo=None, switch="group"):
     print(team1Players)
 
     for player in team1Players:
-        obj = accessJSON.getPlayerInfo(player)
+        obj = accessJSON.getPlayerInfo(player.upper())
         team1Info.append(obj)
 
     for player in team2Players:
-        obj = accessJSON.getPlayerInfo(player)
+        obj = accessJSON.getPlayerInfo(player.upper())
         team2Info.append(obj)
 
     pitchInfo_ = pitchInfo(venue, typeOfPitch)
