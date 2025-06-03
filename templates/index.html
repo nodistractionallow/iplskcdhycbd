@@ -4,195 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cricket Scorecard Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f0f4f8;
-            padding-top: 20px; /* Added padding to avoid content touching top edge */
-            padding-bottom: 20px; /* Added padding to avoid content touching bottom edge */
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 20px;
-            border-radius: 8px; /* Added border-radius for container */
-        }
-        .team-selection {
-            margin-bottom: 20px;
-            padding: 20px; /* Increased padding */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #e9ecef;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        h3 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 15px; /* Added margin for spacing */
-        }
-        h4 {
-            text-align: center;
-            color: #333;
-            margin-top: 20px; /* Added margin for spacing */
-            margin-bottom: 10px; /* Added margin for spacing */
-        }
-        h5 { /* For Bowling titles */
-            color: #333;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-        label {
-            margin-right: 10px;
-        }
-        select {
-            padding: 10px;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            min-width: 100px; /* Ensure select boxes have a decent width */
-        }
-        button {
-            padding: 10px 15px; /* Adjusted padding */
-            margin-right: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-        .scorecard-section {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fff; /* Kept white as container has shadow */
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            border-radius: 5px; /* Rounded corners for table */
-            overflow: hidden; /* Important for border-radius on table */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for tables */
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px; /* Increased padding */
-            text-align: left;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            border-bottom: 2px solid #0056b3; /* Darker blue for header bottom border */
-        }
-        tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-        tbody tr:hover {
-            background-color: #f1f1f1; /* Hover effect for table rows */
-        }
-        .hidden {
-            display: none;
-        }
-        .match-summary { /* General style for summary boxes */
-            background-color: #e7f3fe;
-            padding: 15px; /* Increased padding */
-            border-radius: 5px;
-            margin-top: 15px; /* Added margin */
-            border: 1px solid #b8daff; /* Added border */
-        }
-        .match-summary h4 { /* Specific for toss heading */
-            text-align: left; /* Align toss heading to left */
-            margin-top: 0;
-        }
-        .result-highlight { /* New class for the result message */
-            margin-top: 20px;
-            background-color: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-        }
-        .result-highlight p strong {
-            font-size: 1.1em;
-            font-weight: bold; /* Ensure it's bold */
-        }
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ddd;
-            margin-top: 25px;
-            margin-bottom: 25px;
-        }
-        p strong { /* For Total: lines */
-            font-size: 1.05em;
-        }
-        .commentary-section {
-            margin-top: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .commentary-header {
-            background-color: #6c757d; /* A neutral color */
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px 5px 0 0;
-        }
-        .commentary-header:hover {
-            background-color: #5a6268;
-        }
-        .commentary-content {
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            max-height: 300px; /* Or adjust as needed */
-            overflow-y: auto; /* Scroll for long commentary */
-            display: none; /* Hidden by default */
-        }
-        .commentary-content p {
-            margin: 5px 0;
-            font-size: 0.9em;
-            border-bottom: 1px dashed #eee;
-            padding-bottom: 5px;
-        }
-        .commentary-content p:last-child {
-            border-bottom: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h2>Cricket Scorecard Generator</h2>
+        <h1>IPL Team Selector & Scorecard</h1>
 
-        <div class="team-selection">
-            <h3>Select Teams</h3>
-            <form action="/generate_scorecard" method="post">
-                <label for="team1">Team 1:</label>
-                <select name="team1" id="team1">
-                    {% for team_code, team_players in teams.items() %}
-                        <option value="{{ team_code }}">{{ team_code.upper() }}</option>
-                    {% endfor %}
-                </select>
+        <h3>Select Two Teams</h3>
+        <div class="team-selection-grid">
+            {% for team_code, team_data in teams.items() %}
+            <div class="team-card" data-team-code="{{ team_code }}" data-primary-color="{{ team_data.primary_color }}">
+                <img src="{{ team_data.logo_url }}" alt="{{ team_data.name }} Logo" class="team-logo">
+                <p class="team-name">{{ team_data.name }}</p>
+            </div>
+            {% endfor %}
+        </div>
 
-                <label for="team2">Team 2:</label>
-                <select name="team2" id="team2">
-                    {% for team_code, team_players in teams.items() %}
-                        <option value="{{ team_code }}">{{ team_code.upper() }}</option>
-                    {% endfor %}
-                </select>
+        <div class="simulation-buttons">
+            <button id="btn-simulate-full" disabled>Simulate Full Game</button>
+            <button id="btn-simulate-ball-by-ball" disabled>Simulate Ball by Ball</button>
+        </div>
 
-                <button type="submit">Generate Scorecard</button>
-            </form>
+        <!-- Toss Section -->
+        <div id="toss-section-container" class="hidden">
+            <h3>Toss Time!</h3>
+            <div id="toss-animation">
+                <p id="toss-coin-visual">Flipping the coin...</p>
+                <p id="toss-call-text"></p>
+                <p id="toss-outcome-text"></p>
+            </div>
+            <div id="toss-result">
+                <p id="toss-message-display"></p>
+            </div>
+            <button id="btn-proceed-to-innings" class="hidden">Start 1st Innings</button>
+        </div>
+
+        <!-- LED Display Section -->
+        <div id="led-display-section" class="hidden">
+            <div id="led-screen">
+                <div id="led-ball-outcome" class="outcome-default">0</div>
+                <div id="led-ball-info">Over: 0.0</div>
+                <div id="led-batsmen-info">
+                    <p>On Strike: <span id="led-on-strike-batsman">-</span>*</p>
+                    <p>Non-Striker: <span id="led-non-strike-batsman">-</span></p>
+                </div>
+                <div id="led-bowler-info">Bowler: <span id="led-current-bowler">-</span></div>
+                <div id="led-score-info">Score: <span id="led-current-score">-/-</span></div>
+                <div id="led-innings2-chase-info" class="hidden">
+                    <p>Target: <span id="led-target-score">-</span></p>
+                    <p><span id="led-runs-needed">-</span> runs needed from <span id="led-balls-remaining">-</span> balls</p>
+                </div>
+                <div id="led-match-end-message" class="hidden"></div>
+            </div>
+            <div id="led-controls">
+                <label for="speed-slider">Speed (0.5s - 5s):</label>
+                <input type="range" id="speed-slider" min="500" max="5000" value="1500" step="100">
+                <span id="speed-value">1.5s</span>
+                <button id="btn-play">Play</button>
+                <button id="btn-pause" disabled>Pause</button>
+            </div>
         </div>
 
         {% if scorecard_data %}
@@ -358,5 +228,6 @@
             }
         }
     </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

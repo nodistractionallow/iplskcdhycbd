@@ -1,0 +1,422 @@
+/* Basic Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Team Selection Grid */
+.team-selection-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items for layouts like 5x2 */
+    gap: 20px; /* Spacing between cards */
+    margin-bottom: 30px;
+}
+
+/* Individual Team Cards */
+.team-card {
+    width: 150px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+    margin: 5px; /* Minimal margin, gap handles spacing */
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #fff; /* Default background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    /* Actual hover background color will be set by JS */
+}
+
+/* Selected Team Card Style */
+.team-card-selected {
+    border: 3px solid #007bff; /* Example: Blue border for selected */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* More prominent shadow */
+}
+
+/* Team Logos */
+.team-logo {
+    width: 80px; /* Max width */
+    height: 80px; /* Max height */
+    border-radius: 50%; /* Circular logos */
+    margin-bottom: 10px;
+    object-fit: contain; /* Ensure logo fits well */
+}
+
+/* Team Names */
+.team-name {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Simulation Buttons */
+.simulation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.simulation-buttons button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #5cb85c; /* Green as a placeholder */
+    color: white;
+    /* display: none; Initially hidden/disabled */
+}
+
+#btn-simulate-full:disabled,
+#btn-simulate-ball-by-ball:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Scorecard Section Styling */
+.scorecard-section {
+    background-color: #FFFFF0; /* Very light yellow background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: 2px solid #000000; /* Black border */
+}
+
+.scorecard-section h3 { /* e.g., "Match Results" */
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #F9CD05; /* Yellow accent */
+}
+
+.scorecard-section h4 { /* e.g., "Innings 1: TEAM_CODE" */
+    color: #000000;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #F9CD05; /* Yellow accent */
+}
+.scorecard-section h5 { /* e.g., "Bowling: TEAM_CODE" */
+    color: #000000;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+
+/* Scorecard Table Styling */
+.scorecard-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; /* Reduced margin as h4 has margin */
+    font-size: 0.9em;
+    background-color: #FFFFFF; /* White background for table content */
+}
+
+.scorecard-section th, .scorecard-section td {
+    border: 1px solid #333333; /* Dark grey/black border for cells */
+    padding: 8px; /* Adjusted padding */
+    text-align: left;
+    color: #000000; /* Black text for table content */
+}
+
+.scorecard-section thead th {
+    background-color: #000000; /* Black background */
+    color: #F9CD05; /* Yellow text */
+    font-weight: bold;
+}
+
+/* Row striping for better readability */
+.scorecard-section tbody tr:nth-child(even) {
+    background-color: #FFFFE0; /* Light yellow for even rows */
+}
+.scorecard-section tbody tr:nth-child(odd) {
+    background-color: #FFFFFF; /* White for odd rows */
+}
+
+.scorecard-section tbody tr:hover {
+    background-color: #F0E68C; /* Darker yellow/khaki on hover */
+}
+
+/* Total score paragraph */
+.scorecard-section p {
+    margin-top: 10px;
+}
+.scorecard-section p strong { /* For "Total: ..." */
+    display: inline-block; /* Allows background and padding */
+    background-color: #F9CD05;
+    color: #000000;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+
+/* Match Summary - Toss and Result */
+.scorecard-section .match-summary {
+    background-color: #FFFFE0; /* Light yellow background */
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 1px solid #F9CD05; /* Yellow border */
+    color: #000000; /* Black text */
+}
+
+.scorecard-section .match-summary h4 { /* Toss/Result heading within summary */
+    color: #000000;
+    border-bottom: 1px solid #000000; /* Black underline for these subheadings */
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.scorecard-section .result-highlight { /* Specifically for the final result message box */
+    background-color: #000000; /* Black background */
+    color: #F9CD05; /* Yellow text */
+    border: 2px solid #F9CD05; /* Yellow border */
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em; /* Make result text slightly larger */
+}
+.scorecard-section .result-highlight p strong {
+    background-color: transparent; /* Remove default yellow background for strong within result */
+    color: #FFFFFF; /* White text for emphasis within black box if needed, or inherit yellow */
+    font-weight: bold;
+    padding: 0; /* Reset padding */
+}
+
+
+/* General h1, h2 if they are outside scorecard context */
+h1, h2 {
+    color: #000000; /* Black for main page titles */
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* Ensure page titles h1, h2 outside scorecard are not overly affected if .container has specific color scheme */
+.container > h1, .container > h3 { /* Assuming h3 is "Select Two Teams" */
+    color: #333; /* Keep them neutral if container is white */
+     border-bottom: none; /* Reset scorecard specific borders */
+}
+
+
+/* Hidden class */
+.hidden {
+    display: none !important;
+}
+
+/* Toss Section Styling */
+#toss-section-container {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#toss-animation p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+#toss-coin-visual {
+    font-weight: bold;
+    color: #007bff; /* Blue */
+}
+
+#toss-call-text {
+    color: #28a745; /* Green */
+}
+
+#toss-outcome-text {
+    color: #dc3545; /* Red */
+}
+
+#toss-result {
+    margin-top: 20px;
+}
+
+#toss-message-display {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #17a2b8; /* Info color */
+}
+
+#btn-proceed-to-innings {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+#btn-proceed-to-innings:hover {
+    background-color: #218838; /* Darker Green */
+}
+
+/* LED Display Section Styling */
+#led-display-section {
+    margin-top: 20px;
+    padding: 15px;
+    /* background-color: #f0f0f0; */ /* Light grey, if not using dark screen directly in container */
+    border-radius: 8px;
+}
+
+#led-screen {
+    background-color: #222; /* Dark background */
+    color: #eee; /* Light text color */
+    font-family: 'Courier New', Courier, monospace; /* Monospaced font for LED effect */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    border: 3px solid #444;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5) inset;
+    text-align: center;
+}
+
+#led-ball-outcome {
+    font-size: 5em; /* Prominent display */
+    font-weight: bold;
+    padding: 20px;
+    margin: 10px auto;
+    height: 120px; /* Fixed height */
+    width: 120px;  /* Fixed width */
+    line-height: 120px; /* Vertically center text */
+    border-radius: 15px; /* Rounded corners for the outcome box */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#led-ball-info {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #ffc107; /* Amber color for over info */
+}
+
+#led-batsmen-info p, #led-bowler-info, #led-score-info {
+    font-size: 1.2em;
+    margin: 8px 0;
+}
+
+#led-batsmen-info p span, #led-bowler-info span, #led-score-info span {
+    font-weight: bold;
+    color: #00ff00; /* Green for dynamic data */
+}
+#led-batsmen-info p span#led-on-strike-batsman {
+    /* color: #00ff00; */ /* Already green */
+}
+
+
+#led-innings2-chase-info {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #555;
+}
+#led-innings2-chase-info p {
+    font-size: 1.1em;
+    color: #ff8c00; /* DarkOrange */
+}
+#led-innings2-chase-info p span {
+    font-weight: bold;
+    color: #ff6347; /* Tomato */
+}
+
+
+#led-match-end-message {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffeb3b; /* Yellow for win message */
+    padding: 15px;
+    margin-top: 10px;
+    border: 2px solid #ffeb3b;
+    border-radius: 5px;
+    background-color: rgba(255, 235, 59, 0.1);
+}
+
+/* LED Controls Styling */
+#led-controls {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#led-controls label {
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+#speed-slider {
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 150px;
+}
+
+#led-controls button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #e7e7e7;
+}
+#led-controls button:disabled {
+    background-color: #f8f8f8;
+    color: #aaa;
+    cursor: not-allowed;
+}
+#led-controls button#btn-play {
+    background-color: #28a745; /* Green */
+    color: white;
+    border-color: #28a745;
+}
+#led-controls button#btn-pause {
+    background-color: #ffc107; /* Amber */
+    color: black;
+    border-color: #ffc107;
+}
+
+
+/* Outcome Color Classes */
+.outcome-default { background-color: #555; color: white; }
+.outcome-runs-123 { background-color: #FFFFFF; color: black; }
+.outcome-runs-0 { background-color: #4CAF50; color: white; } /* Different Green */
+.outcome-runs-456 { background-color: #ffeb3b; color: black; } /* Different Yellow */
+.outcome-wicket { background-color: #f44336; color: white; } /* Different Red */
+.outcome-extra { background-color: #00bcd4; color: white; } /* Different Cyan */
+.outcome-innings-break { background-color: #333; color: #ffc107; font-size: 1.5em !important; }
