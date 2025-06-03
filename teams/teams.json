@@ -5,17 +5,17 @@
     "primary_color": "#F9CD05",
     "secondary_color": "#1D418C",
     "players": [
-        "Kieron Pollard",
-        "Hardik Pandya",
-        "Mayank Agarwal",
-        "Moeen Ali",
-        "Rahul Tewatia",
-        "Ambati Rayudu",
-        "Nitish Rana",
-        "Rishabh Pant",
-        "Faf du Plessis",
-        "Abdul Samad",
-        "Ravindra Jadeja"
+      "KA POLLARD",
+      "HARDIK PANDYA",
+      "MAYANK AGARWAL",
+      "MOEEN ALI",
+      "RAHUL TEWATIA",
+      "AMBATI RAYUDU",
+      "NITISH RANA",
+      "RISHABH PANT",
+      "FAF DU PLESSIS",
+      "ABDUL SAMAD",
+      "RAVINDRA JADEJA"
     ]
   },
   "MI": {
@@ -24,17 +24,17 @@
     "primary_color": "#005FA2",
     "secondary_color": "#FFCC32",
     "players": [
-        "Glenn Maxwell",
-        "RINKU SINGH",
-        "Liam Livingstone",
-        "David Warner",
-        "Deepak Chahar",
-        "Mohammed Shami",
-        "Anrich Nortje",
-        "David Miller",
-        "Shikhar Dhawan",
-        "Ishan Kishan",
-        "Kane Williamson"
+      "GJ MAXWELL",
+      "RINKU SINGH",
+      "LS LIVINGSTONE",
+      "DA WARNER",
+      "DL CHAHAR",
+      "M SHAMI",
+      "A NORTJE",
+      "DA MILLER",
+      "S DHAWAN",
+      "ISHAN KISHAN",
+      "KS WILLIAMSON"
     ]
   },
   "KKR": {
@@ -43,17 +43,17 @@
     "primary_color": "#3F2A56",
     "secondary_color": "#D4AF37",
     "players": [
-        "Dwayne Bravo",
-        "Prasidh Krishna",
-        "Kedar Jadhav",
-        "Mustafizur Rahman",
-        "Eoin Morgan",
-        "AB de Villiers",
-        "Shreyas Iyer",
-        "Chetan Sakariya",
-        "Rahul Chahar",
-        "Sandeep Sharma",
-        "Rashid Khan"
+      "DJ BRAVO",
+      "PRASIDH KRISHNA",
+      "KM JADHAV",
+      "MUSTAFIZUR RAHMAN",
+      "EJG MORGAN",
+      "AB DE VILLIERS",
+      "SS IYER",
+      "C SAKARIYA",
+      "RD CHAHAR",
+      "SANDEEP SHARMA",
+      "RASHID KHAN"
     ]
   },
   "RCB": {
@@ -62,17 +62,17 @@
     "primary_color": "#A31D21",
     "secondary_color": "#1B1920",
     "players": [
-        "Shahrukh Khan",
-        "Virat Kohli",
-        "Harpreet Brar",
-        "Rohit Sharma",
-        "Riyan Parag",
-        "Khaleel Ahmed",
-        "Lalit Yadav",
-        "KL Rahul",
-        "Yuzvendra Chahal",
-        "Dan Christian",
-        "Varun Chakravarthy"
+      "M SHAHRUKH KHAN",
+      "V KOHLI",
+      "HARPREET BRAR",
+      "RG SHARMA",
+      "R PARAG",
+      "KK AHMED",
+      "LALIT YADAV",
+      "KL RAHUL",
+      "YS CHAHAL",
+      "DT CHRISTIAN",
+      "CV VARUN"
     ]
   },
   "DC": {
@@ -81,17 +81,17 @@
     "primary_color": "#2561AE",
     "secondary_color": "#D71921",
     "players": [
-        "Harshal Patel",
-        "Shimron Hetmyer",
-        "Wriddhiman Saha",
-        "Nicholas Pooran",
-        "Washington Sundar",
-        "Ravichandran Ashwin",
-        "Rahul Tripathi",
-        "Sunil Narine",
-        "Avesh Khan",
-        "Deepak Hooda",
-        "Mohammed Siraj"
+      "HV PATEL",
+      "SO HETMYER",
+      "WP SAHA",
+      "N POORAN",
+      "WASHINGTON SUNDAR",
+      "R ASHWIN",
+      "RA TRIPATHI",
+      "SP NARINE",
+      "AVESH KHAN",
+      "DJ HOODA",
+      "MOHAMMED SIRAJ"
     ]
   },
   "RR": {
@@ -100,17 +100,17 @@
     "primary_color": "#004BA0",
     "secondary_color": "#D4AF37",
     "players": [
-        "Nathan Ellis",
-        "Bhuvneshwar Kumar",
-        "Shahbaz Ahmed",
-        "Krunal Pandya",
-        "Trent Boult",
-        "Kagiso Rabada",
-        "TILAK VERMA",
-        "Adam Milne",
-        "Sanju Samson",
-        "Sam Curran",
-        "Prithvi Shaw"
+      "N ELLIS",
+      "B KUMAR",
+      "SHAHBAZ AHMED",
+      "KH PANDYA",
+      "TA BOULT",
+      "K RABADA",
+      "TILAK VERMA",
+      "AF MILNE",
+      "SV SAMSON",
+      "SM CURRAN",
+      "PP SHAW"
     ]
   },
   "SRH": {
@@ -119,17 +119,17 @@
     "primary_color": "#F27024",
     "secondary_color": "#1B1920",
     "players": [
-        "Axar Patel",
-        "Suresh Raina",
-        "Kartik Tyagi",
-        "Ravi Bishnoi",
-        "Devdutt Padikkal",
-        "Lockie Ferguson",
-        "Shivam Mavi",
-        "Yashasvi Jaiswal",
-        "Chris Gayle",
-        "Chris Morris",
-        "MS Dhoni"
+      "AR PATEL",
+      "SK RAINA",
+      "KARTIK TYAGI",
+      "RAVI BISHNOI",
+      "D PADDIKAL",
+      "LH FERGUSON",
+      "SHIVAM MAVI",
+      "YBK JAISWAL",
+      "CH GAYLE",
+      "CH MORRIS",
+      "MS DHONI"
     ]
   },
   "PBKS": {
@@ -138,17 +138,17 @@
     "primary_color": "#C2762B",
     "secondary_color": "#FFFFFF",
     "players": [
-        "Shardul Thakur",
-        "Manish Pandey",
-        "Arshdeep Singh",
-        "Jasprit Bumrah",
-        "Dinesh Karthik",
-        "Quinton de Kock",
-        "Andre Russell",
-        "Jason Holder",
-        "Navdeep Saini",
-        "Mahipal Lomror",
-        "Suryakumar Yadav"
+      "SN THAKUR",
+      "MK PANDEY",
+      "ARSHDEEP SINGH",
+      "JJ BUMRAH",
+      "KD KARTHIK",
+      "Q DE KOCK",
+      "AD RUSSELL",
+      "JO HOLDER",
+      "NA SAINI",
+      "MK LOMROR",
+      "SA YADAV"
     ]
   },
   "GT": {
@@ -156,13 +156,37 @@
     "logo_url": "https://scores.iplt20.com/ipl/teamlogos/GT.png?v=1",
     "primary_color": "#1B3A5E",
     "secondary_color": "#C8A465",
-    "players": ["Shubman Gill", "David Miller", "Wriddhiman Saha", "Matthew Wade", "Rashid Khan", "Rahul Tewatia", "Mohammed Shami", "Lockie Ferguson", "Yash Dayal", "Hardik Pandya", "Alzarri Joseph"]
+    "players": [
+      "SHUBMAN GILL",
+      "DA MILLER",
+      "WP SAHA",
+      "MS WADE",
+      "RASHID KHAN",
+      "R TEWATIA",
+      "M SHAMI",
+      "LH FERGUSON",
+      "YASH DAYAL",
+      "HH PANDYA",
+      "AS JOSEPH"
+    ]
   },
   "LSG": {
     "name": "Lucknow Super Giants",
     "logo_url": "https://feeds-100mb.s3-ap-southeast-1.amazonaws.com/teamLogos/gPLvfvSC1X1711457972LSG.png",
     "primary_color": "#004BA0",
     "secondary_color": "#D4AF37",
-    "players": ["KL Rahul", "Quinton de Kock", "Manish Pandey", "Evin Lewis", "Marcus Stoinis", "Jason Holder", "Krunal Pandya", "Deepak Hooda", "Ravi Bishnoi", "Avesh Khan", "Mark Wood"]
+    "players": [
+      "KL RAHUL",
+      "Q DE KOCK",
+      "MK PANDEY",
+      "E LEWIS",
+      "MP STOINIS",
+      "JO HOLDER",
+      "KH PANDYA",
+      "DJ HOODA",
+      "RAVI BISHNOI",
+      "AVESH KHAN",
+      "MA WOOD"
+    ]
   }
 }
