@@ -1,5 +1,10 @@
 {
-    "csk": [
+  "CSK": {
+    "name": "Chennai Super Kings",
+    "logo_url": "https://scores.iplt20.com/ipl/teamlogos/CSK.png",
+    "primary_color": "#F9CD05",
+    "secondary_color": "#1D418C",
+    "players": [
         "Kieron Pollard",
         "Hardik Pandya",
         "Mayank Agarwal",
@@ -11,47 +16,14 @@
         "Faf du Plessis",
         "Abdul Samad",
         "Ravindra Jadeja"
-    ],
-    "rr": [
-        "Nathan Ellis",
-        "Bhuvneshwar Kumar",
-        "Shahbaz Ahmed",
-        "Krunal Pandya",
-        "Trent Boult",
-        "Kagiso Rabada",
-        "TILAK VERMA",
-        "Adam Milne",
-        "Sanju Samson",
-        "Sam Curran",
-        "Prithvi Shaw"
-    ],
-    "dc": [
-        "Harshal Patel",
-        "Shimron Hetmyer",
-        "Wriddhiman Saha",
-        "Nicholas Pooran",
-        "Washington Sundar",
-        "Ravichandran Ashwin",
-        "Rahul Tripathi",
-        "Sunil Narine",
-        "Avesh Khan",
-        "Deepak Hooda",
-        "Mohammed Siraj"
-    ],
-    "kkr": [
-        "Dwayne Bravo",
-        "Prasidh Krishna",
-        "Kedar Jadhav",
-        "Mustafizur Rahman",
-        "Eoin Morgan",
-        "AB de Villiers",
-        "Shreyas Iyer",
-        "Chetan Sakariya",
-        "Rahul Chahar",
-        "Sandeep Sharma",
-        "Rashid Khan"
-    ],
-    "mi": [
+    ]
+  },
+  "MI": {
+    "name": "Mumbai Indians",
+    "logo_url": "https://scores.iplt20.com/ipl/teamlogos/MI.png",
+    "primary_color": "#005FA2",
+    "secondary_color": "#FFCC32",
+    "players": [
         "Glenn Maxwell",
         "RINKU SINGH",
         "Liam Livingstone",
@@ -63,21 +35,33 @@
         "Shikhar Dhawan",
         "Ishan Kishan",
         "Kane Williamson"
-    ],
-    "pbks": [
-        "Shardul Thakur",
-        "Manish Pandey",
-        "Arshdeep Singh",
-        "Jasprit Bumrah",
-        "Dinesh Karthik",
-        "Quinton de Kock",
-        "Andre Russell",
-        "Jason Holder",
-        "Navdeep Saini",
-        "Mahipal Lomror",
-        "Suryakumar Yadav"
-    ],
-    "rcb": [
+    ]
+  },
+  "KKR": {
+    "name": "Kolkata Knight Riders",
+    "logo_url": "https://scores.iplt20.com/ipl/teamlogos/KKR.png",
+    "primary_color": "#3F2A56",
+    "secondary_color": "#D4AF37",
+    "players": [
+        "Dwayne Bravo",
+        "Prasidh Krishna",
+        "Kedar Jadhav",
+        "Mustafizur Rahman",
+        "Eoin Morgan",
+        "AB de Villiers",
+        "Shreyas Iyer",
+        "Chetan Sakariya",
+        "Rahul Chahar",
+        "Sandeep Sharma",
+        "Rashid Khan"
+    ]
+  },
+  "RCB": {
+    "name": "Royal Challengers Bangalore",
+    "logo_url": "https://feeds-100mb.s3-ap-southeast-1.amazonaws.com/teamLogos/NVAlbtIyB81740555172aFPMviEPyJ1710927747rcb.png",
+    "primary_color": "#A31D21",
+    "secondary_color": "#1B1920",
+    "players": [
         "Shahrukh Khan",
         "Virat Kohli",
         "Harpreet Brar",
@@ -89,9 +73,52 @@
         "Yuzvendra Chahal",
         "Dan Christian",
         "Varun Chakravarthy"
-    ],
-    
-    "srh": [
+    ]
+  },
+  "DC": {
+    "name": "Delhi Capitals",
+    "logo_url": "https://scores.iplt20.com/ipl/teamlogos/DC.png",
+    "primary_color": "#2561AE",
+    "secondary_color": "#D71921",
+    "players": [
+        "Harshal Patel",
+        "Shimron Hetmyer",
+        "Wriddhiman Saha",
+        "Nicholas Pooran",
+        "Washington Sundar",
+        "Ravichandran Ashwin",
+        "Rahul Tripathi",
+        "Sunil Narine",
+        "Avesh Khan",
+        "Deepak Hooda",
+        "Mohammed Siraj"
+    ]
+  },
+  "RR": {
+    "name": "Rajasthan Royals",
+    "logo_url": "https://feeds-100mb.s3-ap-southeast-1.amazonaws.com/teamLogos/sSNjJEkBAx1742900310RR---New-Logo.png",
+    "primary_color": "#004BA0",
+    "secondary_color": "#D4AF37",
+    "players": [
+        "Nathan Ellis",
+        "Bhuvneshwar Kumar",
+        "Shahbaz Ahmed",
+        "Krunal Pandya",
+        "Trent Boult",
+        "Kagiso Rabada",
+        "TILAK VERMA",
+        "Adam Milne",
+        "Sanju Samson",
+        "Sam Curran",
+        "Prithvi Shaw"
+    ]
+  },
+  "SRH": {
+    "name": "Sunrisers Hyderabad",
+    "logo_url": "https://scores.iplt20.com/ipl/teamlogos/SRH.png",
+    "primary_color": "#F27024",
+    "secondary_color": "#1B1920",
+    "players": [
         "Axar Patel",
         "Suresh Raina",
         "Kartik Tyagi",
@@ -104,4 +131,38 @@
         "Chris Morris",
         "MS Dhoni"
     ]
+  },
+  "PBKS": {
+    "name": "Punjab Kings",
+    "logo_url": "https://scores.iplt20.com/ipl/teamlogos/PBKS.png",
+    "primary_color": "#C2762B",
+    "secondary_color": "#FFFFFF",
+    "players": [
+        "Shardul Thakur",
+        "Manish Pandey",
+        "Arshdeep Singh",
+        "Jasprit Bumrah",
+        "Dinesh Karthik",
+        "Quinton de Kock",
+        "Andre Russell",
+        "Jason Holder",
+        "Navdeep Saini",
+        "Mahipal Lomror",
+        "Suryakumar Yadav"
+    ]
+  },
+  "GT": {
+    "name": "Gujarat Titans",
+    "logo_url": "https://scores.iplt20.com/ipl/teamlogos/GT.png?v=1",
+    "primary_color": "#1B3A5E",
+    "secondary_color": "#C8A465",
+    "players": ["Shubman Gill", "David Miller", "Wriddhiman Saha", "Matthew Wade", "Rashid Khan", "Rahul Tewatia", "Mohammed Shami", "Lockie Ferguson", "Yash Dayal", "Hardik Pandya", "Alzarri Joseph"]
+  },
+  "LSG": {
+    "name": "Lucknow Super Giants",
+    "logo_url": "https://feeds-100mb.s3-ap-southeast-1.amazonaws.com/teamLogos/gPLvfvSC1X1711457972LSG.png",
+    "primary_color": "#004BA0",
+    "secondary_color": "#D4AF37",
+    "players": ["KL Rahul", "Quinton de Kock", "Manish Pandey", "Evin Lewis", "Marcus Stoinis", "Jason Holder", "Krunal Pandya", "Deepak Hooda", "Ravi Bishnoi", "Avesh Khan", "Mark Wood"]
+  }
 }

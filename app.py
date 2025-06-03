@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import json
 import mainconnect # Import the game logic from mainconnect.py
 import os
@@ -155,6 +155,28 @@ def generate_scorecard():
     }
 
     return render_template('index.html', teams=teams_data, scorecard_data=scorecard_data_for_template)
+
+@app.route('/api/start_simulation', methods=['POST'])
+def start_simulation():
+    data = request.json
+    team1_code = data.get('team1')
+    team2_code = data.get('team2')
+
+    if not team1_code or not team2_code:
+        return jsonify({"error": "Team codes not provided"}), 400
+
+    if team1_code == team2_code:
+        return jsonify({"error": "Cannot select the same team twice"}), 400
+
+    teams_data = load_teams()
+    if team1_code not in teams_data or team2_code not in teams_data:
+        return jsonify({"error": "Invalid team code provided"}), 400
+
+    # Call the game simulation function from mainconnect.py
+    # manual=False for programmatic execution. switch="webapp" is for specific formatting if any.
+    match_results = mainconnect.game(manual=False, sentTeamOne=team1_code, sentTeamTwo=team2_code, switch="webapp")
+
+    return jsonify(match_results)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
