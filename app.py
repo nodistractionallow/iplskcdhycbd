@@ -77,25 +77,45 @@ def generate_scorecard():
                 continue
 
             wicket_found = False
-            for log_entry in stats['ballLog']:
-                if "W:" in log_entry:
-                    wickets += 1
-                    wicket_found = True
-                    parts = log_entry.split(':')[-1].split('-')
-                    if 'CaughtBy' in parts:
-                        try:
-                            fielder_index = parts.index('CaughtBy') + 1
-                            bowler_index = parts.index('Bowler') + 1
-                            stats['how_out'] = f"c {parts[fielder_index]} b {parts[bowler_index]}"
-                        except (ValueError, IndexError):
-                            stats['how_out'] = "Caught" # Fallback
-                    elif 'runout' in parts:
-                        stats['how_out'] = "Run out"
-                    elif len(parts) > 1 and parts[0] == 'W':
-                         stats['how_out'] = f"{parts[1]} b {parts[parts.index('Bowler')+1]}"
-                    else: # Should not happen if W is present
-                        stats['how_out'] = "Wicket"
-                    break # Process only the first wicket entry for how_out
+            for log_entry in stats['ballLog']: # log_entry is like "65:W-CaughtBy-PlayerC-Bowler-PlayerB" or "70:1"
+                # log_entry is a string from the list stats['ballLog']
+                # Example: ['1:1', '2:4', '3:W-bowled-Bowler-PlayerX']
+
+                parts = log_entry.split(':')
+                if len(parts) > 1:
+                    event_details = parts[1]
+                    # Current incorrect logic:
+                    # if "W:" in log_entry:
+
+                    # New logic should be here:
+                    if event_details.startswith("W"): # Correctly check for 'W' indicating a wicket
+                        wickets += 1
+                        wicket_found = True
+
+                        # Further parsing of event_details
+                        if "-CaughtBy-" in event_details:
+                            try:
+                                # Format: W-CaughtBy-Catcher-Bowler-BowlerName
+                                details = event_details.split('-')
+                                catcher = details[details.index('CaughtBy') + 1]
+                                bowler = details[details.index('Bowler') + 1]
+                                stats['how_out'] = f"c {catcher} b {bowler}"
+                            except (ValueError, IndexError):
+                                stats['how_out'] = "Caught" # Fallback
+                        elif "-runout" in event_details:
+                            stats['how_out'] = "Run out"
+                        elif "-Bowler-" in event_details: # For bowled, lbw, stumped, hitwicket etc.
+                            try:
+                                # Format: W-DismissalType-Bowler-BowlerName
+                                details = event_details.split('-')
+                                dismissal_type = details[0][1:] # Get type from "Wtype"
+                                bowler = details[details.index('Bowler') + 1]
+                                stats['how_out'] = f"{dismissal_type} b {bowler}"
+                            except (ValueError, IndexError):
+                                stats['how_out'] = "Wicket" # Fallback
+                        else: # Generic wicket if specific parsing fails
+                            stats['how_out'] = "Wicket"
+                        break
             if not wicket_found and stats['balls'] == 0 and stats['runs'] == 0: # Check if DNB based on 0 balls, 0 runs if not out
                 # This might need adjustment based on how mainconnect.py handles DNB players in ballLog
                 is_dnb = True
