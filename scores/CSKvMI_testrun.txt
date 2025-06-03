@@ -1,0 +1,45 @@
+['Kieron Pollard', 'Hardik Pandya', 'Mayank Agarwal', 'Moeen Ali', 'Rahul Tewatia', 'Ambati Rayudu', 'Nitish Rana', 'Rishabh Pant', 'Faf du Plessis', 'Abdul Samad', 'Ravindra Jadeja']
+Warning: Player initials 'KIERON POLLARD' not found in playerInfoProcessed.json.
+Warning: Player data for 'Kieron Pollard' (Team 1) not found. Skipping.
+Warning: Player initials 'HARDIK PANDYA' not found in playerInfoProcessed.json.
+Warning: Player data for 'Hardik Pandya' (Team 1) not found. Skipping.
+Warning: Player initials 'MAYANK AGARWAL' not found in playerInfoProcessed.json.
+Warning: Player data for 'Mayank Agarwal' (Team 1) not found. Skipping.
+Warning: Player initials 'MOEEN ALI' not found in playerInfoProcessed.json.
+Warning: Player data for 'Moeen Ali' (Team 1) not found. Skipping.
+Warning: Player initials 'RAHUL TEWATIA' not found in playerInfoProcessed.json.
+Warning: Player data for 'Rahul Tewatia' (Team 1) not found. Skipping.
+Warning: Player initials 'AMBATI RAYUDU' not found in playerInfoProcessed.json.
+Warning: Player data for 'Ambati Rayudu' (Team 1) not found. Skipping.
+Warning: Player initials 'NITISH RANA' not found in playerInfoProcessed.json.
+Warning: Player data for 'Nitish Rana' (Team 1) not found. Skipping.
+Warning: Player initials 'RISHABH PANT' not found in playerInfoProcessed.json.
+Warning: Player data for 'Rishabh Pant' (Team 1) not found. Skipping.
+Warning: Player initials 'FAF DU PLESSIS' not found in playerInfoProcessed.json.
+Warning: Player data for 'Faf du Plessis' (Team 1) not found. Skipping.
+Warning: Player initials 'ABDUL SAMAD' not found in playerInfoProcessed.json.
+Warning: Player data for 'Abdul Samad' (Team 1) not found. Skipping.
+Warning: Player initials 'RAVINDRA JADEJA' not found in playerInfoProcessed.json.
+Warning: Player data for 'Ravindra Jadeja' (Team 1) not found. Skipping.
+Warning: Player initials 'GLENN MAXWELL' not found in playerInfoProcessed.json.
+Warning: Player data for 'Glenn Maxwell' (Team 2) not found. Skipping.
+Warning: Player initials 'LIAM LIVINGSTONE' not found in playerInfoProcessed.json.
+Warning: Player data for 'Liam Livingstone' (Team 2) not found. Skipping.
+Warning: Player initials 'DAVID WARNER' not found in playerInfoProcessed.json.
+Warning: Player data for 'David Warner' (Team 2) not found. Skipping.
+Warning: Player initials 'DEEPAK CHAHAR' not found in playerInfoProcessed.json.
+Warning: Player data for 'Deepak Chahar' (Team 2) not found. Skipping.
+Warning: Player initials 'MOHAMMED SHAMI' not found in playerInfoProcessed.json.
+Warning: Player data for 'Mohammed Shami' (Team 2) not found. Skipping.
+Warning: Player initials 'ANRICH NORTJE' not found in playerInfoProcessed.json.
+Warning: Player data for 'Anrich Nortje' (Team 2) not found. Skipping.
+Warning: Player initials 'DAVID MILLER' not found in playerInfoProcessed.json.
+Warning: Player data for 'David Miller' (Team 2) not found. Skipping.
+Warning: Player initials 'SHIKHAR DHAWAN' not found in playerInfoProcessed.json.
+Warning: Player data for 'Shikhar Dhawan' (Team 2) not found. Skipping.
+Warning: Player initials 'ISHAN KISHAN' not found in playerInfoProcessed.json.
+Warning: Player data for 'Ishan Kishan' (Team 2) not found. Skipping.
+Warning: Player initials 'KANE WILLIAMSON' not found in playerInfoProcessed.json.
+Warning: Player data for 'Kane Williamson' (Team 2) not found. Skipping.
+MI won the toss and chose to bat
+An unexpected error occurred: list index out of range

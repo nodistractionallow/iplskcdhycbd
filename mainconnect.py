@@ -2276,19 +2276,46 @@ def game(manual=True, sentTeamOne=None, sentTeamTwo=None, switch="group"):
     team2Info = []
 
     # spin, pace factor -> 0.0 - 1.0
-    team1Players = dataFile[team_one_inp]
-    team2Players = dataFile[team_two_inp]
+    team1Players = dataFile[team_one_inp]["players"]
+    team2Players = dataFile[team_two_inp]["players"]
     team1 = team_one_inp
     team2 = team_two_inp
     print(team1Players)
 
     for player in team1Players:
         obj = accessJSON.getPlayerInfo(player.upper())
+        if obj is None:
+            print(f"Warning: Player data for '{player}' (Team 1) not found. Skipping.")
+            continue
         team1Info.append(obj)
 
     for player in team2Players:
         obj = accessJSON.getPlayerInfo(player.upper())
+        if obj is None:
+            print(f"Warning: Player data for '{player}' (Team 2) not found. Skipping.")
+            continue
         team2Info.append(obj)
+
+    if not team1Info or not team2Info:
+        error_message = f"CRITICAL ERROR: Cannot start simulation. Team '{team1}' has {len(team1Info)} players, Team '{team2}' has {len(team2Info)} players. Both teams need valid player data to proceed."
+        print(error_message)
+        sys.stdout.close()
+        sys.stdout = stdoutOrigin
+        return {
+            "error": f"Team setup failed. Team {team1} has {len(team1Info)} players, Team {team2} has {len(team2Info)} players.",
+            "innings1Batting": "Simulation aborted", "innings1Bowling": "Simulation aborted",
+            "innings2Batting": "Simulation aborted", "innings2Bowling": "Simulation aborted",
+            "innings2Balls": 0, "innings1Balls": 0,
+            "innings1Runs": 0, "innings2Runs": 0,
+            "winMsg": "Simulation aborted due to empty team(s) after player data lookup.",
+            "innings1Battracker": {}, "innings2Battracker": {},
+            "innings1Bowltracker": {}, "innings2Bowltracker": {},
+            "innings1BatTeam": team1,
+            "innings2BatTeam": team2,
+            "winner": None,
+            "innings1Log": [], "innings2Log": [],
+            "tossMsg": "Toss not conducted due to team data issues."
+        }
 
     pitchInfo_ = pitchInfo(venue, typeOfPitch)
     paceFactor, spinFactor, outfield = pitchInfo_[
