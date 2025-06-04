@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Please select exactly two teams.");
             return;
         }
-
+        console.log(`[API Call] Starting simulation for teams: ${selectedTeams[0]} vs ${selectedTeams[1]}`);
         try {
             const response = await fetch('/api/start_simulation', {
                 method: 'POST',
@@ -120,14 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({ team1: selectedTeams[0], team2: selectedTeams[1] }),
             });
+            console.log("[API Call] Raw response object:", response);
 
             if (!response.ok) {
-                const errorData = await response.json();
+                let errorData = { error: `HTTP error! status: ${response.status}` };
+                try {
+                    errorData = await response.json();
+                    console.error("[API Call] Error data from response:", errorData);
+                } catch (e) {
+                    console.error("[API Call] Could not parse error JSON from response", e);
+                }
                 throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
             }
 
             currentMatchData = await response.json();
-            console.log("Match data received:", currentMatchData);
+            console.log("[API Call] Parsed currentMatchData:", currentMatchData);
 
             // Hide team selection and simulation buttons
             if(teamSelectionGrid) teamSelectionGrid.classList.add('hidden');
@@ -169,10 +176,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 4000); // 4 seconds delay
 
         } catch (error) {
-            console.error('Error starting ball-by-ball simulation:', error);
-            alert(`Error: ${error.message}`);
+            console.error('[API Call] Error in fetch /api/start_simulation:', error);
+            alert(`Error starting simulation: ${error.message}`);
         }
     });
+
+    // Event Listener for "Simulate Full Match" button
+    if (btnSimulateFull) {
+        btnSimulateFull.addEventListener('click', () => {
+            if (selectedTeams.length !== 2) {
+                alert("Please select exactly two teams to simulate a full match.");
+                return;
+            }
+
+            // Create a temporary form
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/generate_scorecard';
+
+            // Create hidden input for team1
+            const inputTeam1 = document.createElement('input');
+            inputTeam1.type = 'hidden';
+            inputTeam1.name = 'team1';
+            inputTeam1.value = selectedTeams[0];
+            form.appendChild(inputTeam1);
+
+            // Create hidden input for team2
+            const inputTeam2 = document.createElement('input');
+            inputTeam2.type = 'hidden';
+            inputTeam2.name = 'team2';
+            inputTeam2.value = selectedTeams[1];
+            form.appendChild(inputTeam2);
+
+            // Append form to body, submit, and then remove
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form); // Optional: remove after submit
+        });
+    }
 
     // Event Listener for "Proceed to Innings" button
     if (btnProceedToInnings) {
@@ -188,44 +229,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initializeLedDisplay() {
+        console.log("[Initialize LED] Called. currentMatchData:", currentMatchData);
         simState.isPaused = true; // Should start paused
         simState.currentBallIndex = 0;
         if(simState.timeoutId) clearTimeout(simState.timeoutId);
 
-        if (!currentMatchData) return;
+        if (!currentMatchData) {
+            console.error("[Initialize LED] currentMatchData is null or undefined. Cannot initialize display.");
+            return;
+        }
 
-        const firstBallInnings = simState.currentInnings === 1 ? currentMatchData.innings1Log[0] : currentMatchData.innings2Log[0];
-        simState.batsmanOnStrike = firstBallInnings.batsman; // Initial on-strike batsman from log
-        // Determine initial non-striker: if batsman is batter1, non-striker is batter2, else batter1
-        simState.batsmanNonStrike = firstBallInnings.batsman === firstBallInnings.batter1 ? firstBallInnings.batter2 : firstBallInnings.batter1;
+        try {
+            const firstBallInnings = simState.currentInnings === 1 ? currentMatchData.innings1Log[0] : currentMatchData.innings2Log[0];
+            if (!firstBallInnings) {
+                console.error("[Initialize LED] First ball of innings is undefined. Innings Log:", simState.currentInnings === 1 ? currentMatchData.innings1Log : currentMatchData.innings2Log);
+                // Set to defaults or handle as error
+                simState.batsmanOnStrike = "N/A";
+                simState.batsmanNonStrike = "N/A";
+            } else {
+                simState.batsmanOnStrike = firstBallInnings.batsman; // Initial on-strike batsman from log
+                // Determine initial non-striker: if batsman is batter1, non-striker is batter2, else batter1
+                simState.batsmanNonStrike = firstBallInnings.batsman === firstBallInnings.batter1 ? firstBallInnings.batter2 : firstBallInnings.batter1;
+            }
+        } catch (e) {
+            console.error("[Initialize LED] Error accessing first ball data or batsmen:", e, "Innings Data:", simState.currentInnings === 1 ? currentMatchData.innings1Log : currentMatchData.innings2Log);
+            simState.batsmanOnStrike = "Error";
+            simState.batsmanNonStrike = "Error";
+        }
+        console.log(`[Initialize LED] Initial Batsmen: OnStrike: ${simState.batsmanOnStrike}, NonStrike: ${simState.batsmanNonStrike}`);
 
 
         if (simState.currentInnings === 1) {
             simState.activeInningsLog = currentMatchData.innings1Log;
-            if(ledCurrentScore) ledCurrentScore.textContent = `0/0 (${currentMatchData.innings1BatTeam.toUpperCase()})`;
-            if(ledInnings2ChaseInfo) ledInnings2ChaseInfo.classList.add('hidden');
-            if(ledMatchEndMessage) ledMatchEndMessage.classList.add('hidden');
+            console.log("[Initialize LED] Set activeInningsLog for Innings 1:", simState.activeInningsLog);
+            try {
+                if(ledCurrentScore) ledCurrentScore.textContent = `0/0 (${currentMatchData.innings1BatTeam.toUpperCase()})`;
+                if(ledInnings2ChaseInfo) ledInnings2ChaseInfo.classList.add('hidden');
+                if(ledMatchEndMessage) ledMatchEndMessage.classList.add('hidden');
+            } catch (e) {
+                console.error("[Initialize LED] Error setting up DOM for Innings 1:", e);
+            }
         } else { // Innings 2
             simState.activeInningsLog = currentMatchData.innings2Log;
-            if(ledCurrentScore) ledCurrentScore.textContent = `0/0 (${currentMatchData.innings2BatTeam.toUpperCase()})`;
-            const target = currentMatchData.innings1Runs + 1;
-            if(ledTargetScore) ledTargetScore.textContent = target;
-            if(ledInnings2ChaseInfo) ledInnings2ChaseInfo.classList.remove('hidden');
-            if(ledMatchEndMessage) ledMatchEndMessage.classList.add('hidden');
+            console.log("[Initialize LED] Set activeInningsLog for Innings 2:", simState.activeInningsLog);
+            try {
+                if(ledCurrentScore) ledCurrentScore.textContent = `0/0 (${currentMatchData.innings2BatTeam.toUpperCase()})`;
+                const target = currentMatchData.innings1Runs + 1;
+                if(ledTargetScore) ledTargetScore.textContent = target;
+                if(ledInnings2ChaseInfo) ledInnings2ChaseInfo.classList.remove('hidden');
+                if(ledMatchEndMessage) ledMatchEndMessage.classList.add('hidden');
+            } catch (e) {
+                console.error("[Initialize LED] Error setting up DOM for Innings 2:", e);
+            }
         }
 
-        if(ledBallOutcome) {
-            ledBallOutcome.textContent = "▶"; // Play symbol or 0
-            ledBallOutcome.className = 'led-ball-outcome outcome-default'; // Reset class
-        }
-        if(simState.activeInningsLog && simState.activeInningsLog.length > 0) {
-             updateDisplayForBall(simState.activeInningsLog[0], true); // Display first ball info without "playing" it
-        } else {
-            // Handle empty log if necessary
-            if(ledBallInfo) ledBallInfo.textContent = "Over: 0.0";
-            if(ledOnStrikeBatsman) ledOnStrikeBatsman.textContent = "-";
-            if(ledNonStrikeBatsman) ledNonStrikeBatsman.textContent = "-";
-            if(ledCurrentBowler) ledCurrentBowler.textContent = "-";
+        try {
+            if(ledBallOutcome) {
+                ledBallOutcome.textContent = "▶"; // Play symbol or 0
+                ledBallOutcome.className = 'led-ball-outcome outcome-default'; // Reset class
+            }
+            if(simState.activeInningsLog && simState.activeInningsLog.length > 0) {
+                 updateDisplayForBall(simState.activeInningsLog[0], true); // Display first ball info without "playing" it
+            } else {
+                console.warn("[Initialize LED] Active innings log is empty or null. Displaying default LED info.");
+                if(ledBallInfo) ledBallInfo.textContent = "Over: 0.0";
+                if(ledOnStrikeBatsman) ledOnStrikeBatsman.textContent = "-";
+                if(ledNonStrikeBatsman) ledNonStrikeBatsman.textContent = "-";
+                if(ledCurrentBowler) ledCurrentBowler.textContent = "-";
+            }
+        } catch (e) {
+            console.error("[Initialize LED] Error in final display setup or calling updateDisplayForBall:", e);
         }
         updatePlayPauseButtons();
     }
@@ -237,9 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const outcomeRegex = /^(\d+\.\d+)\s+(.+?)\s+to\s+(.+?)\s+(.+?)\s+Score:\s*(\d+\/\d+)/;
 
     function extractBallOutcome(eventString) {
+        console.log("[Extract Ball] Event string:", eventString);
         const match = eventString.match(outcomeRegex);
+        console.log("[Extract Ball] Regex match result:", match);
         if (!match) {
-            console.warn("Could not parse event string:", eventString);
+            console.warn("[Extract Ball] Could not parse event string with regex:", eventString);
             // Fallback for unparsed or simple log entries like "End of Over"
             if (eventString.toLowerCase().includes("end of over")) return { outcomeText: "End of Over", overBallStr: "", isWicket: false, isExtra: false, runs: 0, bowler: "", batsman: "" };
             return { outcomeText: eventString.substring(0,15), overBallStr: "", isWicket: false, isExtra: false, runs: 0, bowler: "", batsman: "" }; // Show part of string
@@ -290,66 +365,94 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateDisplayForBall(ballLogEntry, isInitial = false) {
+        console.log("[Update Display] ballLogEntry:", ballLogEntry, "isInitial:", isInitial);
         if (!ballLogEntry || !ballLogEntry.event) {
-            console.warn("Invalid ballLogEntry:", ballLogEntry);
+            console.warn("[Update Display] Invalid ballLogEntry or event in ballLogEntry:", ballLogEntry);
             return;
         }
 
         const parsedInfo = extractBallOutcome(ballLogEntry.event);
+        console.log("[Update Display] parsedInfo from extractBallOutcome:", parsedInfo);
 
-        if(ledBallInfo) ledBallInfo.textContent = `Over: ${parsedInfo.overBallStr}`;
-        if(ledBallOutcome) {
-            ledBallOutcome.textContent = parsedInfo.outcomeText;
-            ledBallOutcome.className = 'led-ball-outcome '; // Reset classes
-            if (parsedInfo.isWicket) {
-                ledBallOutcome.classList.add('outcome-wicket');
-            } else if (parsedInfo.outcomeText === "WD" || parsedInfo.outcomeText === "NB" || parsedInfo.isExtra) {
-                ledBallOutcome.classList.add('outcome-extra');
-            } else if (parsedInfo.outcomeText === "0") {
-                ledBallOutcome.classList.add('outcome-runs-0');
-            } else if (["4", "5", "6"].includes(parsedInfo.outcomeText)) {
-                ledBallOutcome.classList.add('outcome-runs-456');
-            } else if (["1", "2", "3"].includes(parsedInfo.outcomeText)) {
-                ledBallOutcome.classList.add('outcome-runs-123');
-            } else {
-                ledBallOutcome.classList.add('outcome-default');
+        try {
+            if(ledBallInfo) ledBallInfo.textContent = `Over: ${parsedInfo.overBallStr}`;
+            if(ledBallOutcome) {
+                ledBallOutcome.textContent = parsedInfo.outcomeText;
+                ledBallOutcome.className = 'led-ball-outcome '; // Reset classes
+                if (parsedInfo.isWicket) {
+                    ledBallOutcome.classList.add('outcome-wicket');
+                } else if (parsedInfo.outcomeText === "WD" || parsedInfo.outcomeText === "NB" || parsedInfo.isExtra) {
+                    ledBallOutcome.classList.add('outcome-extra');
+                } else if (parsedInfo.outcomeText === "0") {
+                    ledBallOutcome.classList.add('outcome-runs-0');
+                } else if (["4", "5", "6"].includes(parsedInfo.outcomeText)) {
+                    ledBallOutcome.classList.add('outcome-runs-456');
+                } else if (["1", "2", "3"].includes(parsedInfo.outcomeText)) {
+                    ledBallOutcome.classList.add('outcome-runs-123');
+                } else {
+                    ledBallOutcome.classList.add('outcome-default');
+                }
             }
+        } catch (e) {
+            console.error("[Update Display] Error updating LED ball outcome/info:", e);
         }
 
         // Update batsman on strike and non-striker
-        // The 'batsman' in ballLogEntry.batsman is the one who faced the ball.
         simState.batsmanOnStrike = parsedInfo.batsman; // Batsman who faced the ball
-        // Determine non-striker: if current on-strike is batter1, non-striker is batter2, else batter1.
-        // This needs initial batter1 and batter2 from the log entry.
+        console.log(`[Update Display] Batsman on strike (from parsedInfo): ${simState.batsmanOnStrike}`);
+        console.log(`[Update Display] About to determine non-striker. ballLogEntry.batter1: ${ballLogEntry.batter1}, ballLogEntry.batter2: ${ballLogEntry.batter2}`);
         if (ballLogEntry.batter1 && ballLogEntry.batter2) {
              simState.batsmanNonStrike = (parsedInfo.batsman === ballLogEntry.batter1) ? ballLogEntry.batter2 : ballLogEntry.batter1;
+        } else {
+            console.warn("[Update Display] batter1 or batter2 is missing in ballLogEntry. Non-striker may be incorrect.");
+            // Attempt to find non-striker from previous state if this is not the first ball, or set to a default
+             simState.batsmanNonStrike = simState.batsmanNonStrike || "N/A"; // Keep existing if available
         }
+        console.log(`[Update Display] Batsman non-strike: ${simState.batsmanNonStrike}`);
 
+        try {
+            if(ledOnStrikeBatsman) ledOnStrikeBatsman.textContent = simState.batsmanOnStrike;
+            if(ledNonStrikeBatsman) ledNonStrikeBatsman.textContent = simState.batsmanNonStrike;
+            if(ledCurrentBowler) ledCurrentBowler.textContent = parsedInfo.bowler;
 
-        if(ledOnStrikeBatsman) ledOnStrikeBatsman.textContent = simState.batsmanOnStrike;
-        if(ledNonStrikeBatsman) ledNonStrikeBatsman.textContent = simState.batsmanNonStrike;
-        if(ledCurrentBowler) ledCurrentBowler.textContent = parsedInfo.bowler;
-
-        // Score from ballLogEntry reflects total score *after* this ball
-        if(ledCurrentScore) {
-            const teamCode = simState.currentInnings === 1 ? currentMatchData.innings1BatTeam.toUpperCase() : currentMatchData.innings2BatTeam.toUpperCase();
-            ledCurrentScore.textContent = `${ballLogEntry.runs}/${ballLogEntry.wickets} (${teamCode})`;
+            // Score from ballLogEntry reflects total score *after* this ball
+            if(ledCurrentScore) {
+                const teamCode = simState.currentInnings === 1 ? currentMatchData.innings1BatTeam.toUpperCase() : currentMatchData.innings2BatTeam.toUpperCase();
+                ledCurrentScore.textContent = `${ballLogEntry.runs}/${ballLogEntry.wickets} (${teamCode})`;
+            }
+        } catch (e) {
+            console.error("[Update Display] Error updating batsmen/bowler/score DOM elements:", e);
         }
-
 
         if (simState.currentInnings === 2) {
-            const target = currentMatchData.innings1Runs + 1;
-            const runsNeeded = target - ballLogEntry.runs;
-            const ballsRemaining = 120 - ballLogEntry.balls; // Assuming 20 overs
-            if(ledTargetScore) ledTargetScore.textContent = target;
-            if(ledRunsNeeded) ledRunsNeeded.textContent = runsNeeded > 0 ? runsNeeded : 0;
-            if(ledBallsRemaining) ledBallsRemaining.textContent = ballsRemaining;
-            if(ledInnings2ChaseInfo) ledInnings2ChaseInfo.classList.remove('hidden');
+            try {
+                const target = currentMatchData.innings1Runs + 1;
+                const runsNeeded = target - ballLogEntry.runs;
+                const ballsRemaining = 120 - ballLogEntry.balls; // Assuming 20 overs
+                if(ledTargetScore) ledTargetScore.textContent = target;
+                if(ledRunsNeeded) ledRunsNeeded.textContent = runsNeeded > 0 ? runsNeeded : 0;
+                if(ledBallsRemaining) ledBallsRemaining.textContent = ballsRemaining;
+                if(ledInnings2ChaseInfo) ledInnings2ChaseInfo.classList.remove('hidden');
 
-            if (runsNeeded <= 0 && ballLogEntry.runs > 0) { // Check if target achieved
-                 if(ledMatchEndMessage && currentMatchData.winMsg) {
-                    ledMatchEndMessage.textContent = currentMatchData.winMsg;
-                    ledMatchEndMessage.classList.remove('hidden');
+                if (runsNeeded <= 0 && ballLogEntry.runs >= 0) { // Target achieved (runs can be 0 if wickets fell on target score)
+                     if(ledMatchEndMessage && currentMatchData.winMsg) {
+                        ledMatchEndMessage.textContent = currentMatchData.winMsg;
+                        ledMatchEndMessage.classList.remove('hidden');
+                    } else if (ledMatchEndMessage) {
+                        ledMatchEndMessage.textContent = "Target Achieved!"; // Fallback message
+                        ledMatchEndMessage.classList.remove('hidden');
+                    }
+                    console.log("[Update Display] Target achieved in Innings 2.");
+                    simState.isPaused = true;
+                    clearTimeout(simState.timeoutId);
+                    updatePlayPauseButtons();
+                }
+            } catch (e) {
+                console.error("[Update Display] Error updating Innings 2 chase info:", e);
+            }
+        }
+         // Batsmen swap logic for next ball (simplified: after 1, 3, 5 runs, or end of over)
+        // This is complex because extractBallOutcome gives runs for *this* ball.
                 }
                 simState.isPaused = true;
                 clearTimeout(simState.timeoutId);
@@ -370,24 +473,41 @@ document.addEventListener('DOMContentLoaded', () => {
     function playNextBall() {
         if (simState.isPaused) return;
         if (!simState.activeInningsLog) {
-            console.error("No active innings log!");
+            console.error("[Play Next Ball] No active innings log! Halting playback.");
+            simState.isPaused = true;
+            updatePlayPauseButtons();
             return;
         }
 
+        console.log(`[Play Next Ball] Current Index: ${simState.currentBallIndex}, Log Length: ${simState.activeInningsLog.length}`);
+
         if (simState.currentBallIndex >= simState.activeInningsLog.length) {
             if (simState.currentInnings === 1) {
+                console.log("[Play Next Ball] End of Innings 1. Switching to Innings 2.");
                 simState.currentInnings = 2;
                 simState.currentBallIndex = 0;
-                if(ledBallOutcome) {
-                    ledBallOutcome.textContent = "Innings Break";
-                    ledBallOutcome.className = 'led-ball-outcome outcome-innings-break';
+                try {
+                    if(ledBallOutcome) {
+                        ledBallOutcome.textContent = "Innings Break";
+                        ledBallOutcome.className = 'led-ball-outcome outcome-innings-break';
+                    }
+                    // Update batsmen for start of 2nd innings
+                    if (currentMatchData && currentMatchData.innings2Log && currentMatchData.innings2Log.length > 0) {
+                        const firstBallSecondInnings = currentMatchData.innings2Log[0];
+                        if (firstBallSecondInnings) {
+                            simState.batsmanOnStrike = firstBallSecondInnings.batsman;
+                            simState.batsmanNonStrike = firstBallSecondInnings.batsman === firstBallSecondInnings.batter1 ? firstBallSecondInnings.batter2 : firstBallSecondInnings.batter1;
+                             console.log(`[Play Next Ball] Set batsmen for Innings 2: OnStrike: ${simState.batsmanOnStrike}, NonStrike: ${simState.batsmanNonStrike}`);
+                        } else {
+                            console.warn("[Play Next Ball] First ball of Innings 2 log is undefined.");
+                        }
+                    } else {
+                        console.warn("[Play Next Ball] Innings 2 log is missing or empty. Cannot set initial batsmen for Innings 2.");
+                    }
+                } catch (e) {
+                    console.error("[Play Next Ball] Error during Innings 1 to 2 transition:", e);
                 }
-                // Update batsmen for start of 2nd innings
-                if (currentMatchData.innings2Log && currentMatchData.innings2Log.length > 0) {
-                    const firstBallSecondInnings = currentMatchData.innings2Log[0];
-                    simState.batsmanOnStrike = firstBallSecondInnings.batsman;
-                    simState.batsmanNonStrike = firstBallSecondInnings.batsman === firstBallSecondInnings.batter1 ? firstBallSecondInnings.batter2 : firstBallSecondInnings.batter1;
-                }
+
 
                 simState.timeoutId = setTimeout(() => {
                     initializeLedDisplay(); // Sets up for 2nd innings
@@ -395,11 +515,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 3000); // 3s break
                 return;
             } else { // Match ended
-                if(ledMatchEndMessage && currentMatchData.winMsg) {
-                    ledMatchEndMessage.textContent = currentMatchData.winMsg;
-                    ledMatchEndMessage.classList.remove('hidden');
-                } else {
-                     if(ledBallOutcome) ledBallOutcome.textContent = "Match End";
+                console.log("[Play Next Ball] End of Match.");
+                try {
+                    if(ledMatchEndMessage && currentMatchData && currentMatchData.winMsg) {
+                        ledMatchEndMessage.textContent = currentMatchData.winMsg;
+                        ledMatchEndMessage.classList.remove('hidden');
+                    } else if (ledBallOutcome) {
+                         ledBallOutcome.textContent = "Match End";
+                    } else if (ledMatchEndMessage) {
+                        ledMatchEndMessage.textContent = "Match Ended";
+                        ledMatchEndMessage.classList.remove('hidden');
+                    }
+                } catch (e) {
+                    console.error("[Play Next Ball] Error displaying match end message:", e);
                 }
                 simState.isPaused = true;
                 updatePlayPauseButtons();
@@ -407,10 +535,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Check for "End of Over" type messages if mainconnect.py adds them.
-        // For now, assuming each entry in inningsLog is a ball or a wicket event.
         const currentEvent = simState.activeInningsLog[simState.currentBallIndex];
-        updateDisplayForBall(currentEvent);
+        console.log(`[Play Next Ball] Processing event for ball ${simState.currentBallIndex}:`, currentEvent);
+        try {
+            updateDisplayForBall(currentEvent);
+        } catch (e) {
+            console.error(`[Play Next Ball] Error updating display for ball ${simState.currentBallIndex}:`, e, "Event:", currentEvent);
+            simState.isPaused = true; // Pause on error to prevent spamming
+            updatePlayPauseButtons();
+            return;
+        }
+
 
         // Batsman rotation for *next* ball (simplified)
         // The log itself should dictate who faces the next ball by having `ballData.batsman`

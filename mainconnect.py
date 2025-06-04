@@ -298,43 +298,75 @@ def innings1(batting, bowling, battingName, bowlingName, pace, spin, outfield, d
 
 
     def playerDismissed(player):
-        nonlocal batter1, batter2, onStrike
+        nonlocal batter1, batter2, onStrike, wickets # Ensure wickets is part of nonlocal if modified
         # print("OUT", player['player']['playerInitials'])
-        if(wickets == 10):
-            print("ALL OUT")
-        else:
-            if(batter1 == player):
-                onStrike = battingOrder[wickets + 1]
-                batter1 = battingOrder[wickets + 1]
-                found = False
-                index_l = 0
-                while(not found):
-                    # localBattingOrder = sorted(battingOrder, key=lambda k: k['posAvgsAll'][str(wickets)])
-                    # localBattingOrder.reverse()
-                    localBattingOrder = battingOrder
-                    if(batterTracker[localBattingOrder[index_l]['player']['playerInitials']]['balls'] == 0):
-                        onStrike = localBattingOrder[index_l]
-                        batter1 = localBattingOrder[index_l]
-                        found = True
-                    else:
-                        index_l += 1
+        if(wickets >= 10): # Check if already all out
+            # print("ALL OUT (already 10 wickets down or more)")
+            return
 
+        # If wickets + 1 (for the next player to come in, which is battingOrder[wickets+1] effectively)
+        # is out of bounds for the actual number of players available.
+        # wickets here is the count of wickets *already fallen*.
+        # So if 9 wickets are down, next player is battingOrder[9+1] = battingOrder[10] (11th player)
+        # If len(battingOrder) is 10 (meaning 10 players, indices 0-9), battingOrder[10] is an error.
+        # Thus, if wickets + 1 >= len(battingOrder), we've run out of players.
+        if wickets + 1 >= len(battingOrder):
+            # print(f"Innings 1: Not enough players to continue. Wickets: {wickets}, Batting order size: {len(battingOrder)}")
+            wickets = 10 # Signify all out
+            print("ALL OUT (ran out of available batsmen)")
+            return
 
-            else:
-                onStrike = battingOrder[wickets + 1]
-                batter2 = battingOrder[wickets + 1]
-                found = False
-                index_l = 0
-                while(not found):
-                    # localBattingOrder = sorted(battingOrder, key=lambda k: k['posAvgsAll'][str(wickets)])
-                    # localBattingOrder.reverse()
-                    localBattingOrder = battingOrder
-                    if(batterTracker[localBattingOrder[index_l]['player']['playerInitials']]['balls'] == 0):
-                        onStrike = localBattingOrder[index_l]
-                        batter2 = localBattingOrder[index_l]
-                        found = True
-                    else:
-                        index_l += 1
+        # The original logic to find the next available batsman.
+        # This part might need further review if it assumes a full 11-player battingOrder
+        # for its internal indexing, but the primary IndexError is from the initial assignment.
+
+        # Original logic for replacing batter1:
+        if(batter1 == player):
+            # The original code was trying to assign battingOrder[wickets + 1] then find an unused one.
+            # This is where the index error would occur if battingOrder is too short.
+            # The check above (wickets + 1 >= len(battingOrder)) should prevent this.
+
+            # Attempt to find the next available batsman from the *remaining* part of the order.
+            # A simple approach: the next player in `battingOrder` list that hasn't batted and isn't the non-striker.
+            new_batsman_assigned = False
+            for i in range(len(battingOrder)): # Iterate through the whole order to find next available
+                potential_next_batsman = battingOrder[i]
+                # Check if this player is not already in (either as batter2 or previously dismissed)
+                # and hasn't batted yet (or is the one just dismissed, to be replaced)
+                is_batter2 = (potential_next_batsman == batter2)
+                has_batted = batterTracker[potential_next_batsman['player']['playerInitials']]['balls'] > 0
+
+                # This player can come in if they are not batter2 AND they haven't batted yet.
+                if not is_batter2 and not has_batted :
+                    batter1 = potential_next_batsman
+                    onStrike = batter1 # New batsman is on strike
+                    new_batsman_assigned = True
+                    break
+
+            if not new_batsman_assigned: # Fallback if loop doesn't find anyone (shouldn't happen if not all out)
+                # This condition implies an issue or all batsmen available already batted/are out.
+                # print("Innings 1: Could not find a replacement for batter1. All out.")
+                wickets = 10
+                return
+
+        # Original logic for replacing batter2:
+        else: # batter2 was player
+            new_batsman_assigned = False
+            for i in range(len(battingOrder)):
+                potential_next_batsman = battingOrder[i]
+                is_batter1 = (potential_next_batsman == batter1)
+                has_batted = batterTracker[potential_next_batsman['player']['playerInitials']]['balls'] > 0
+
+                if not is_batter1 and not has_batted:
+                    batter2 = potential_next_batsman
+                    onStrike = batter2 # New batsman is on strike
+                    new_batsman_assigned = True
+                    break
+
+            if not new_batsman_assigned:
+                # print("Innings 1: Could not find a replacement for batter2. All out.")
+                wickets = 10
+                return
              
         # print(batter1['player']['playerInitials']) 
         # print(batter2['player']['playerInitials'])
@@ -1260,43 +1292,55 @@ def innings2(batting, bowling, battingName, bowlingName, pace, spin, outfield, d
 
 
     def playerDismissed(player):
-        nonlocal batter1, batter2, onStrike, targetChased
+        nonlocal batter1, batter2, onStrike, targetChased, wickets # Ensure wickets is part of nonlocal
         # print("OUT", player['player']['playerInitials'])
-        if(wickets == 10):
-            print("ALL OUT")
-        else:
-            if(batter1 == player):
-                onStrike = battingOrder[wickets + 1]
-                batter1 = battingOrder[wickets + 1]
-                found = False
-                index_l = 0
-                while(not found):
-                    # localBattingOrder = sorted(battingOrder, key=lambda k: k['posAvgsAll'][str(wickets)])
-                    # localBattingOrder.reverse()
-                    localBattingOrder = battingOrder
-                    if(batterTracker[localBattingOrder[index_l]['player']['playerInitials']]['balls'] == 0):
-                        onStrike = localBattingOrder[index_l]
-                        batter1 = localBattingOrder[index_l]
-                        found = True
-                    else:
-                        index_l += 1
+        if(wickets >= 10): # Check if already all out
+            # print("ALL OUT (already 10 wickets down or more)")
+            return
 
+        if wickets + 1 >= len(battingOrder):
+            # print(f"Innings 2: Not enough players to continue. Wickets: {wickets}, Batting order size: {len(battingOrder)}")
+            wickets = 10 # Signify all out
+            print("ALL OUT (ran out of available batsmen)")
+            return
 
-            else:
-                onStrike = battingOrder[wickets + 1]
-                batter2 = battingOrder[wickets + 1]
-                found = False
-                index_l = 0
-                while(not found):
-                    # localBattingOrder = sorted(battingOrder, key=lambda k: k['posAvgsAll'][str(wickets)])
-                    # localBattingOrder.reverse()
-                    localBattingOrder = battingOrder
-                    if(batterTracker[localBattingOrder[index_l]['player']['playerInitials']]['balls'] == 0):
-                        onStrike = localBattingOrder[index_l]
-                        batter2 = localBattingOrder[index_l]
-                        found = True
-                    else:
-                        index_l += 1
+        # Original logic for replacing batter1:
+        if(batter1 == player):
+            new_batsman_assigned = False
+            for i in range(len(battingOrder)):
+                potential_next_batsman = battingOrder[i]
+                is_batter2 = (potential_next_batsman == batter2)
+                has_batted = batterTracker[potential_next_batsman['player']['playerInitials']]['balls'] > 0
+
+                if not is_batter2 and not has_batted :
+                    batter1 = potential_next_batsman
+                    onStrike = batter1
+                    new_batsman_assigned = True
+                    break
+
+            if not new_batsman_assigned:
+                # print("Innings 2: Could not find a replacement for batter1. All out.")
+                wickets = 10
+                return
+
+        # Original logic for replacing batter2:
+        else: # batter2 was player
+            new_batsman_assigned = False
+            for i in range(len(battingOrder)):
+                potential_next_batsman = battingOrder[i]
+                is_batter1 = (potential_next_batsman == batter1)
+                has_batted = batterTracker[potential_next_batsman['player']['playerInitials']]['balls'] > 0
+
+                if not is_batter1 and not has_batted:
+                    batter2 = potential_next_batsman
+                    onStrike = batter2
+                    new_batsman_assigned = True
+                    break
+
+            if not new_batsman_assigned:
+                # print("Innings 2: Could not find a replacement for batter2. All out.")
+                wickets = 10
+                return
              
         # print(batter1['player']['playerInitials']) 
         # print(batter2['player']['playerInitials'])
